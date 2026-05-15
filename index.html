@@ -406,11 +406,8 @@ document.addEventListener('keydown',e=>{if(e.key==='Escape')closeModal();});
 // Disable right click
 document.addEventListener('contextmenu',e=>e.preventDefault());
 
-// Load products from JSON (populated with Stripe links at build time)
-fetch('products.json')
-  .then(r => r.json())
-  .then(data => { products = data; buildGrid(); buildGallery(); })
-  .catch(() => console.error('Could not load products.json'));
+// Products injected at build time by sync-stripe.js
+/* __PRODUCTS_INJECT__ */
 </script>
 </body>
 </html>

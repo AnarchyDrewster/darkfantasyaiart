@@ -105,7 +105,14 @@ async function main() {
   }
 
   fs.writeFileSync('products.json', JSON.stringify(updated, null, 2));
-  console.log('\nDone. products.json updated with Stripe payment links.\n');
+
+  // Inject products array directly into index.html so no fetch is needed
+  const html = fs.readFileSync('index.html', 'utf8');
+  const injection = `products = ${JSON.stringify(updated)};\nbuildGrid();\nbuildGallery();`;
+  const patched = html.replace('/* __PRODUCTS_INJECT__ */', injection);
+  fs.writeFileSync('index.html', patched);
+
+  console.log('\nDone. products.json updated and index.html patched with Stripe payment links.\n');
 }
 
 main().catch(err => { console.error(err.message); process.exit(1); });
