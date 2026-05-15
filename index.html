@@ -360,7 +360,7 @@ function buildGrid() {
 }
 
 function buildGallery() {
-  document.getElementById('galleryGrid').innerHTML = products.map(p => `<div class="gallery-item">
+  document.getElementById('galleryGrid').innerHTML = products.map(p => `<div class="gallery-item" onclick="openModal(${p.id})">
     <img src="${p.img}" alt="${p.name}" loading="lazy">
     <div class="gallery-overlay"><div class="gallery-view">View Piece</div></div>
   </div>`).join('');
