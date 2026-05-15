@@ -1,3 +1,2 @@
 [build]
   command = "node sync-stripe.js"
-  publish = "."
