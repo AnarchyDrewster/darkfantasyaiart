@@ -1,0 +1,430 @@
+﻿
+<!DOCTYPE html>
+<!-- v2.0 - darkfantasyaiart.com standalone -->
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Explore Drew's Beginning — dark fantasy AI art available as instant digital downloads. Unique, atmospheric pieces crafted where technology meets the shadows. Own yours today.">
+<title>Dark Fantasy AI Art | Drew</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@400;700&family=Cinzel:wght@400;600&family=Crimson+Pro:ital,wght@0,300;0,400;1,300&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+  :root {
+    --gold: #c9a84c; --gold-light: #e8c97a; --gold-dim: #7a6030;
+    --blood: #8b1a1a; --void: #050507; --deep: #0a0a0f;
+    --surface: #0f0f18; --surface2: #161622; --surface3: #1e1e2e;
+    --text: #e8e0d0; --text-dim: #9a8e7a;
+    --border: rgba(201,168,76,0.15); --border-hover: rgba(201,168,76,0.4);
+  }
+  html { scroll-behavior: smooth; }
+  body { background: var(--void); color: var(--text); font-family: 'Crimson Pro', Georgia, serif; font-size: 18px; line-height: 1.7; cursor: none; overflow-x: hidden; }
+  body::before { content: ''; position: fixed; inset: 0; background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E"); pointer-events: none; z-index: 1000; opacity: 0.4; }
+  .cursor { width: 12px; height: 12px; border: 1px solid var(--gold); border-radius: 50%; position: fixed; pointer-events: none; z-index: 9999; transition: transform 0.15s ease; transform: translate(-50%,-50%); }
+  .cursor-dot { width: 4px; height: 4px; background: var(--gold); border-radius: 50%; position: fixed; pointer-events: none; z-index: 9999; transform: translate(-50%,-50%); }
+  nav { position: fixed; top: 0; left: 0; right: 0; z-index: 500; padding: 1.5rem 4rem; display: flex; align-items: center; justify-content: space-between; background: linear-gradient(to bottom, rgba(5,5,7,0.95) 0%, transparent 100%); border-bottom: 0.5px solid transparent; transition: border-color 0.3s, background 0.3s; }
+  nav.scrolled { background: rgba(5,5,7,0.97); border-bottom-color: var(--border); }
+  .nav-logo { font-family: 'Cinzel Decorative', serif; font-size: 1.1rem; color: var(--gold); text-decoration: none; letter-spacing: 0.05em; }
+  .nav-logo span { color: var(--text-dim); font-size: 0.7rem; display: block; letter-spacing: 0.3em; font-family: 'Cinzel', serif; font-weight: 400; margin-top: 2px; }
+  .nav-links { display: flex; gap: 2.5rem; list-style: none; }
+  .nav-links a { color: var(--text-dim); text-decoration: none; font-family: 'Cinzel', serif; font-size: 0.75rem; letter-spacing: 0.2em; text-transform: uppercase; transition: color 0.2s; position: relative; }
+  .nav-links a::after { content: ''; position: absolute; bottom: -4px; left: 0; right: 0; height: 0.5px; background: var(--gold); transform: scaleX(0); transition: transform 0.3s ease; transform-origin: left; }
+  .nav-links a:hover { color: var(--gold); }
+  .nav-links a:hover::after { transform: scaleX(1); }
+  #home { min-height: 100vh; display: flex; align-items: center; justify-content: center; position: relative; overflow: hidden; padding: 8rem 4rem 4rem; }
+  .hero-bg { position: absolute; inset: 0; }
+  .hero-bg img { width: 100%; height: 100%; object-fit: cover; opacity: 0.35; }
+  .hero-bg::after { content: ''; position: absolute; inset: 0; background: linear-gradient(to bottom, rgba(5,5,7,0.3) 0%, rgba(5,5,7,0.5) 50%, rgba(5,5,7,0.95) 100%); }
+  .hero-lines { position: absolute; inset: 0; background-image: linear-gradient(rgba(201,168,76,0.03) 1px, transparent 1px), linear-gradient(90deg, rgba(201,168,76,0.03) 1px, transparent 1px); background-size: 60px 60px; mask-image: radial-gradient(ellipse 80% 80% at 50% 50%, black 0%, transparent 100%); }
+  .hero-content { text-align: center; position: relative; z-index: 2; max-width: 900px; }
+  .hero-eyebrow { font-family: 'Cinzel', serif; font-size: 0.7rem; letter-spacing: 0.5em; color: var(--gold); text-transform: uppercase; margin-bottom: 2rem; opacity: 0; animation: fadeUp 1s ease 0.2s forwards; }
+  .hero-title { font-family: 'Cinzel Decorative', serif; font-size: clamp(2.5rem, 7vw, 5.5rem); font-weight: 700; line-height: 1.1; color: var(--text); margin-bottom: 1.5rem; opacity: 0; animation: fadeUp 1s ease 0.4s forwards; }
+  .hero-title .accent { color: var(--gold); }
+  .hero-subtitle { font-size: 1.2rem; color: var(--text-dim); font-style: italic; max-width: 600px; margin: 0 auto 3rem; opacity: 0; animation: fadeUp 1s ease 0.6s forwards; }
+  .hero-cta { display: inline-flex; align-items: center; gap: 1rem; opacity: 0; animation: fadeUp 1s ease 0.8s forwards; }
+  .btn-primary { font-family: 'Cinzel', serif; font-size: 0.75rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--void); background: var(--gold); border: none; padding: 1rem 2.5rem; cursor: none; text-decoration: none; transition: background 0.2s, transform 0.2s; display: inline-block; }
+  .btn-primary:hover { background: var(--gold-light); transform: translateY(-2px); }
+  .btn-ghost { font-family: 'Cinzel', serif; font-size: 0.75rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--gold); background: transparent; border: 0.5px solid var(--gold-dim); padding: 1rem 2.5rem; cursor: none; text-decoration: none; transition: border-color 0.2s, color 0.2s, transform 0.2s; display: inline-block; }
+  .btn-ghost:hover { border-color: var(--gold); color: var(--gold-light); transform: translateY(-2px); }
+  .hero-scroll { position: absolute; bottom: 3rem; left: 50%; transform: translateX(-50%); display: flex; flex-direction: column; align-items: center; gap: 0.5rem; opacity: 0; animation: fadeIn 1s ease 1.5s forwards; }
+  .hero-scroll span { font-family: 'Cinzel', serif; font-size: 0.6rem; letter-spacing: 0.4em; color: var(--text-dim); text-transform: uppercase; }
+  .scroll-line { width: 0.5px; height: 60px; background: linear-gradient(to bottom, var(--gold-dim), transparent); animation: scrollPulse 2s ease infinite; }
+  .rune-divider { text-align: center; padding: 1rem 0; color: var(--gold-dim); font-size: 1.2rem; letter-spacing: 1rem; opacity: 0.6; }
+  .section-header { text-align: center; margin-bottom: 4rem; }
+  .section-eyebrow { font-family: 'Cinzel', serif; font-size: 0.65rem; letter-spacing: 0.5em; color: var(--gold); text-transform: uppercase; margin-bottom: 1rem; }
+  .section-title { font-family: 'Cinzel Decorative', serif; font-size: clamp(1.8rem, 4vw, 3rem); color: var(--text); line-height: 1.2; }
+  .section-line { width: 60px; height: 0.5px; background: linear-gradient(to right, transparent, var(--gold), transparent); margin: 1.5rem auto 0; }
+  #shop { padding: 8rem 4rem; background: var(--deep); position: relative; }
+  #shop::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 1px; background: linear-gradient(to right, transparent, var(--gold-dim), transparent); }
+  .featured-banner { max-width: 1400px; margin: 0 auto 4rem; background: var(--surface2); border: 0.5px solid var(--border); padding: 0; display: grid; grid-template-columns: 1fr 1fr; overflow: hidden; position: relative; }
+  .featured-text-side { padding: 3rem; display: flex; flex-direction: column; justify-content: center; }
+  .featured-label { font-family: 'Cinzel', serif; font-size: 0.65rem; letter-spacing: 0.4em; color: var(--gold); text-transform: uppercase; margin-bottom: 1rem; display: flex; align-items: center; gap: 1rem; }
+  .featured-label::before { content: ''; width: 30px; height: 0.5px; background: var(--gold); }
+  .featured-title { font-family: 'Cinzel Decorative', serif; font-size: 2rem; color: var(--text); margin-bottom: 1rem; line-height: 1.2; }
+  .featured-desc { color: var(--text-dim); font-style: italic; margin-bottom: 2rem; font-size: 1rem; }
+  .featured-img { aspect-ratio: 1; overflow: hidden; }
+  .featured-img img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.6s ease; }
+  .featured-banner:hover .featured-img img { transform: scale(1.04); }
+  .shop-filters { display: flex; justify-content: center; gap: 1rem; margin-bottom: 3rem; flex-wrap: wrap; }
+  .filter-btn { font-family: 'Cinzel', serif; font-size: 0.65rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--text-dim); background: transparent; border: 0.5px solid var(--border); padding: 0.5rem 1.5rem; cursor: none; transition: all 0.2s; }
+  .filter-btn:hover, .filter-btn.active { color: var(--gold); border-color: var(--gold-dim); }
+  .product-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 1.5px; max-width: 1400px; margin: 0 auto; }
+  .product-card { position: relative; aspect-ratio: 3/4; background: var(--surface); overflow: hidden; cursor: none; }
+  .product-card::before { content: ''; position: absolute; inset: 0; background: linear-gradient(to top, rgba(5,5,7,0.95) 0%, rgba(5,5,7,0.4) 40%, transparent 70%); z-index: 2; transition: opacity 0.4s; }
+  .product-card:hover::before { background: linear-gradient(to top, rgba(5,5,7,0.98) 0%, rgba(5,5,7,0.7) 60%, rgba(5,5,7,0.2) 100%); }
+  .product-card img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.6s ease; display: block; }
+  .product-card:hover img { transform: scale(1.05); }
+  .product-info { position: absolute; bottom: 0; left: 0; right: 0; padding: 1.5rem; z-index: 3; transform: translateY(10px); transition: transform 0.3s ease; }
+  .product-card:hover .product-info { transform: translateY(0); }
+  .product-tag { font-family: 'Cinzel', serif; font-size: 0.6rem; letter-spacing: 0.3em; color: var(--gold); text-transform: uppercase; margin-bottom: 0.3rem; }
+  .product-name { font-family: 'Cinzel', serif; font-size: 1rem; color: var(--text); margin-bottom: 0.5rem; font-weight: 600; }
+  .product-desc { font-size: 0.85rem; color: var(--text-dim); font-style: italic; margin-bottom: 1rem; max-height: 0; overflow: hidden; transition: max-height 0.3s ease, opacity 0.3s; opacity: 0; }
+  .product-card:hover .product-desc { max-height: 60px; opacity: 1; }
+  .product-footer { display: flex; align-items: center; justify-content: space-between; }
+  .product-price { font-family: 'Cinzel', serif; font-size: 0.9rem; color: var(--gold); }
+  .product-buy { font-family: 'Cinzel', serif; font-size: 0.6rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--void); background: var(--gold); border: none; padding: 0.4rem 1rem; cursor: none; transition: background 0.2s; text-decoration: none; display: inline-block; }
+  .product-buy:hover { background: var(--gold-light); }
+  #gallery { padding: 8rem 4rem; background: var(--void); position: relative; }
+  #gallery::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 1px; background: linear-gradient(to right, transparent, var(--gold-dim), transparent); }
+  .gallery-masonry { columns: 3; column-gap: 1.5px; max-width: 1400px; margin: 0 auto; }
+  .gallery-item { break-inside: avoid; margin-bottom: 1.5px; position: relative; overflow: hidden; cursor: none; }
+  .gallery-item img { width: 100%; display: block; transition: transform 0.4s ease; }
+  .gallery-item:hover img { transform: scale(1.04); }
+  .gallery-overlay { position: absolute; inset: 0; background: rgba(5,5,7,0); display: flex; align-items: center; justify-content: center; transition: background 0.3s; }
+  .gallery-item:hover .gallery-overlay { background: rgba(5,5,7,0.5); }
+  .gallery-view { font-family: 'Cinzel', serif; font-size: 0.65rem; letter-spacing: 0.3em; text-transform: uppercase; color: var(--gold); border: 0.5px solid var(--gold-dim); padding: 0.5rem 1.2rem; opacity: 0; transform: translateY(10px); transition: opacity 0.3s, transform 0.3s; }
+  .gallery-item:hover .gallery-view { opacity: 1; transform: translateY(0); }
+  #about { padding: 8rem 4rem; background: var(--deep); position: relative; }
+  #about::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 1px; background: linear-gradient(to right, transparent, var(--gold-dim), transparent); }
+  .about-inner { max-width: 900px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1.5fr; gap: 6rem; align-items: center; }
+  .about-sigil { aspect-ratio: 1; border: 0.5px solid var(--border); display: flex; align-items: center; justify-content: center; position: relative; }
+  .about-sigil::before { content: ''; position: absolute; inset: 8px; border: 0.5px solid var(--border); transform: rotate(45deg); }
+  .sigil-text { font-family: 'Cinzel Decorative', serif; font-size: 3rem; color: var(--gold); position: relative; z-index: 1; }
+  .about-content p { color: var(--text-dim); margin-bottom: 1.5rem; font-size: 1.05rem; }
+  .about-content p strong { color: var(--text); font-weight: 400; font-style: italic; }
+  .about-stats { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; margin-top: 3rem; padding-top: 2rem; border-top: 0.5px solid var(--border); }
+  .stat-item { text-align: center; }
+  .stat-num { font-family: 'Cinzel', serif; font-size: 1.8rem; color: var(--gold); display: block; }
+  .stat-label { font-size: 0.75rem; color: var(--text-dim); letter-spacing: 0.1em; font-family: 'Cinzel', serif; text-transform: uppercase; }
+  .newsletter { background: var(--surface2); border-top: 0.5px solid var(--border); border-bottom: 0.5px solid var(--border); padding: 5rem 4rem; text-align: center; }
+  .newsletter-title { font-family: 'Cinzel Decorative', serif; font-size: 1.6rem; color: var(--text); margin-bottom: 0.75rem; }
+  .newsletter-sub { color: var(--text-dim); font-style: italic; margin-bottom: 2rem; }
+  .newsletter-form { display: flex; max-width: 500px; margin: 0 auto; }
+  .newsletter-input { flex: 1; background: var(--surface); border: 0.5px solid var(--border); border-right: none; color: var(--text); padding: 1rem 1.5rem; font-family: 'Crimson Pro', Georgia, serif; font-size: 1rem; outline: none; }
+  .newsletter-input::placeholder { color: var(--text-dim); }
+  .newsletter-btn { font-family: 'Cinzel', serif; font-size: 0.65rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--void); background: var(--gold); border: none; padding: 1rem 2rem; cursor: none; transition: background 0.2s; }
+  .newsletter-btn:hover { background: var(--gold-light); }
+  #contact { padding: 8rem 4rem; background: var(--void); position: relative; }
+  #contact::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 1px; background: linear-gradient(to right, transparent, var(--gold-dim), transparent); }
+  .contact-inner { max-width: 700px; margin: 0 auto; text-align: center; }
+  .contact-text { color: var(--text-dim); font-style: italic; font-size: 1.1rem; margin-bottom: 3rem; }
+  .contact-form { text-align: left; display: flex; flex-direction: column; gap: 1.5rem; }
+  .form-group { display: flex; flex-direction: column; gap: 0.5rem; }
+  .form-label { font-family: 'Cinzel', serif; font-size: 0.65rem; letter-spacing: 0.3em; text-transform: uppercase; color: var(--text-dim); }
+  .form-input, .form-textarea { background: var(--surface); border: 0.5px solid var(--border); color: var(--text); padding: 1rem 1.25rem; font-family: 'Crimson Pro', Georgia, serif; font-size: 1rem; outline: none; transition: border-color 0.2s; resize: vertical; cursor: none; }
+  .form-input:focus, .form-textarea:focus { border-color: var(--gold-dim); }
+  .form-textarea { min-height: 140px; }
+  .form-submit { font-family: 'Cinzel', serif; font-size: 0.75rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--void); background: var(--gold); border: none; padding: 1.1rem 3rem; cursor: none; align-self: center; margin-top: 0.5rem; transition: background 0.2s, transform 0.2s; }
+  .form-submit:hover { background: var(--gold-light); transform: translateY(-2px); }
+  .contact-email { margin-top: 3rem; padding-top: 2rem; border-top: 0.5px solid var(--border); display: flex; align-items: center; justify-content: center; gap: 1rem; color: var(--text-dim); font-size: 0.9rem; }
+  .contact-email a { color: var(--gold); text-decoration: none; }
+  footer { background: var(--void); padding: 4rem 4rem 2rem; }
+  .footer-top { display: grid; grid-template-columns: 1.5fr 1fr 1fr 1fr; gap: 3rem; padding-bottom: 3rem; border-bottom: 0.5px solid var(--border); margin-bottom: 2rem; }
+  .footer-brand p { color: var(--text-dim); font-size: 0.9rem; font-style: italic; margin-top: 1rem; }
+  .footer-col h4 { font-family: 'Cinzel', serif; font-size: 0.65rem; letter-spacing: 0.3em; text-transform: uppercase; color: var(--gold); margin-bottom: 1.5rem; }
+  .footer-col ul { list-style: none; display: flex; flex-direction: column; gap: 0.75rem; }
+  .footer-col a { color: var(--text-dim); text-decoration: none; font-size: 0.9rem; transition: color 0.2s; }
+  .footer-col a:hover { color: var(--gold); }
+  .footer-bottom { display: flex; justify-content: space-between; align-items: center; }
+  .footer-copy { font-family: 'Cinzel', serif; font-size: 0.6rem; letter-spacing: 0.2em; color: var(--text-dim); text-transform: uppercase; }
+  .footer-legal { display: flex; gap: 2rem; }
+  .footer-legal a { font-family: 'Cinzel', serif; font-size: 0.6rem; letter-spacing: 0.15em; color: var(--text-dim); text-decoration: none; text-transform: uppercase; transition: color 0.2s; }
+  .footer-legal a:hover { color: var(--gold); }
+  .modal-overlay { position: fixed; inset: 0; background: rgba(5,5,7,0.92); z-index: 800; display: flex; align-items: center; justify-content: center; opacity: 0; pointer-events: none; transition: opacity 0.3s; backdrop-filter: blur(4px); }
+  .modal-overlay.open { opacity: 1; pointer-events: all; }
+  .modal { background: var(--surface); border: 0.5px solid var(--border); max-width: 680px; width: 90%; display: grid; grid-template-columns: 1fr 1fr; overflow: hidden; position: relative; transform: translateY(20px); transition: transform 0.3s; }
+  .modal-overlay.open .modal { transform: translateY(0); }
+  .modal-img { overflow: hidden; }
+  .modal-img img { width: 100%; height: 100%; object-fit: cover; display: block; }
+  .modal-body-side { padding: 2rem; display: flex; flex-direction: column; justify-content: space-between; }
+  .modal-close { position: absolute; top: 1rem; right: 1rem; background: rgba(5,5,7,0.8); border: none; color: var(--text-dim); font-size: 1.2rem; cursor: none; transition: color 0.2s; line-height: 1; width: 28px; height: 28px; display: flex; align-items: center; justify-content: center; z-index: 10; }
+  .modal-close:hover { color: var(--gold); }
+  .modal-tag { font-family: 'Cinzel', serif; font-size: 0.6rem; letter-spacing: 0.4em; color: var(--gold); text-transform: uppercase; margin-bottom: 0.75rem; }
+  .modal-title { font-family: 'Cinzel Decorative', serif; font-size: 1.3rem; color: var(--text); margin-bottom: 1rem; line-height: 1.3; }
+  .modal-desc { color: var(--text-dim); font-style: italic; font-size: 0.95rem; flex: 1; }
+  .modal-footer { padding-top: 1.5rem; border-top: 0.5px solid var(--border); margin-top: 1.5rem; }
+  .modal-price { font-family: 'Cinzel', serif; font-size: 1.4rem; color: var(--gold); margin-bottom: 0.25rem; }
+  .modal-note { font-size: 0.75rem; color: var(--text-dim); margin-bottom: 1rem; }
+  .reveal { opacity: 0; transform: translateY(30px); transition: opacity 0.8s ease, transform 0.8s ease; }
+  .reveal.visible { opacity: 1; transform: translateY(0); }
+  @keyframes fadeUp { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }
+  @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+  @keyframes scrollPulse { 0%, 100% { opacity: 0.3; } 50% { opacity: 1; } }
+  @media (max-width: 768px) {
+    nav { padding: 1.5rem 2rem; } .nav-links { display: none; }
+    #home, #shop, #about, #gallery, #contact { padding: 6rem 2rem; }
+    .about-inner { grid-template-columns: 1fr; gap: 3rem; }
+    .featured-banner { grid-template-columns: 1fr; }
+    .gallery-masonry { columns: 2; }
+    .footer-top { grid-template-columns: 1fr 1fr; }
+    .newsletter { padding: 4rem 2rem; }
+    .newsletter-form { flex-direction: column; }
+    .modal { grid-template-columns: 1fr; }
+    .modal-img { max-height: 250px; }
+  }
+</style>
+</head>
+<body>
+<div class="cursor" id="cursor"></div>
+<div class="cursor-dot" id="cursorDot"></div>
+
+<nav id="navbar">
+  <a href="#home" class="nav-logo">Drew's Beginning<span>Where Darkness Meets Digital</span></a>
+  <ul class="nav-links">
+    <li><a href="#shop">Shop</a></li>
+    <li><a href="#gallery">Gallery</a></li>
+    <li><a href="#about">About</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+</nav>
+
+<section id="home">
+  <div class="hero-bg"><img src="images/hero.jpg" alt="Dark fantasy dragon artwork"></div>
+  <div class="hero-lines"></div>
+  <div class="hero-content">
+    <p class="hero-eyebrow">Dark Fantasy · AI Art · Digital Downloads</p>
+    <h1 class="hero-title">Drew's <span class="accent">Beginning</span></h1>
+    <p class="hero-subtitle">Where technology descends into shadow — original dark fantasy AI art, yours as an instant digital download.</p>
+    <div class="hero-cta">
+      <a href="#shop" class="btn-primary">Enter the Collection</a>
+      <a href="#about" class="btn-ghost">Meet the Artist</a>
+    </div>
+  </div>
+  <div class="hero-scroll"><span>Scroll</span><div class="scroll-line"></div></div>
+</section>
+
+<div class="rune-divider">✦ ✦ ✦</div>
+
+<section id="shop">
+  <div class="section-header reveal">
+    <p class="section-eyebrow">The Collection</p>
+    <h2 class="section-title">Digital Artworks</h2>
+    <div class="section-line"></div>
+  </div>
+
+  <div class="featured-banner reveal">
+    <div class="featured-text-side">
+      <div>
+        <div class="featured-label">Featured Work</div>
+        <h3 class="featured-title">Mystical Madness</h3>
+        <p class="featured-desc">Born from the void between code and consciousness — a piece that defies the boundary between machine and myth. Instant digital download, yours to own forever.</p>
+        <a href="#shop" class="btn-primary" target="_blank">Featured — $6.00</a>
+      </div>
+    </div>
+    <div class="featured-img"><img src="images/art_9.jpg" alt="Featured artwork"></div>
+  </div>
+
+  <div class="shop-filters reveal">
+    <button class="filter-btn active">All Works</button>
+    <button class="filter-btn">Dark Fantasy</button>
+    <button class="filter-btn">Creatures</button>
+    <button class="filter-btn">Landscapes</button>
+    <button class="filter-btn">Mystical</button>
+  </div>
+
+  <div class="product-grid reveal" id="productGrid"></div>
+</section>
+
+<div class="rune-divider">✦ ✦ ✦</div>
+
+<section id="gallery">
+  <div class="section-header reveal">
+    <p class="section-eyebrow">The Archive</p>
+    <h2 class="section-title">Full Gallery</h2>
+    <div class="section-line"></div>
+  </div>
+  <div class="gallery-masonry reveal" id="galleryGrid"></div>
+</section>
+
+<section id="about">
+  <div class="about-inner">
+    <div class="about-sigil reveal"><span class="sigil-text">DB</span></div>
+    <div class="about-content reveal">
+      <p class="section-eyebrow">The Creator</p>
+      <h2 class="section-title" style="text-align:left;margin-bottom:2rem;">About Drew</h2>
+      <p>I'm Drew — <strong>a digital artist lost in the shadows between technology and imagination.</strong> My work explores the darker side of fantasy; ancient creatures, arcane worlds, and the haunting beauty that lives where light doesn't reach.</p>
+      <p>Every piece is born from AI and shaped by my vision, resulting in art that feels both otherworldly and deeply intentional. <strong>No prints, no physical goods</strong> — just pure digital art, yours instantly, to use and explore however you choose.</p>
+      <p>Welcome to the beginning of something dark.</p>
+      <div class="about-stats">
+        <div class="stat-item"><span class="stat-num">20+</span><span class="stat-label">Works</span></div>
+        <div class="stat-item"><span class="stat-num">100%</span><span class="stat-label">Digital</span></div>
+        <div class="stat-item"><span class="stat-num">∞</span><span class="stat-label">Dark</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="newsletter reveal">
+  <h3 class="newsletter-title">Join the Dark Side</h3>
+  <p class="newsletter-sub">Be the first to know when new pieces drop into the void.</p>
+  <div class="newsletter-form">
+    <input type="email" placeholder="your@email.com" class="newsletter-input">
+    <button class="newsletter-btn">Descend</button>
+  </div>
+</div>
+
+<section id="contact">
+  <div class="contact-inner">
+    <div class="section-header reveal">
+      <p class="section-eyebrow">Reach Out</p>
+      <h2 class="section-title">Contact</h2>
+      <div class="section-line"></div>
+    </div>
+    <p class="contact-text reveal">Questions, commissions, or just want to talk about the darkness?</p>
+    <form class="contact-form reveal" onsubmit="return false;">
+      <div class="form-group"><label class="form-label">Name</label><input type="text" class="form-input" placeholder="Your name"></div>
+      <div class="form-group"><label class="form-label">Email</label><input type="email" class="form-input" placeholder="your@email.com"></div>
+      <div class="form-group"><label class="form-label">Message</label><textarea class="form-textarea" placeholder="Write your message..."></textarea></div>
+      <button type="submit" class="form-submit">Send into the Void</button>
+    </form>
+    <div class="contact-email reveal"><span>Or email:</span><a href="mailto:info@darkfantasyaiart.com">info@darkfantasyaiart.com</a></div>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-top">
+    <div class="footer-brand">
+      <a href="#home" class="nav-logo">Drew's Beginning<span>Where Darkness Meets Digital</span></a>
+      <p>Dark fantasy AI art and mystical digital downloads.</p>
+    </div>
+    <div class="footer-col"><h4>Shop</h4><ul><li><a href="#shop">All Works</a></li><li><a href="#shop" </li><li><a href="#gallery">Gallery</a></li></ul></div>
+    <div class="footer-col"><h4>Info</h4><ul><li><a href="#about">About Drew</a></li><li><a href="#contact">Contact</a></li><li><a href="mailto:info@darkfantasyaiart.com">Email</a></li></ul></div>
+    <div class="footer-col"><h4>Follow</h4><ul><li><a href="#">Instagram</a></li><li><a href="#">Pinterest</a></li><li><a href="#">TikTok</a></li></ul></div>
+  </div>
+  <div class="footer-bottom">
+    <span class="footer-copy">© 2026 Drew's Beginning. All Rights Reserved.</span>
+    <div class="footer-legal"><a href="#">Privacy</a><a href="#">Terms</a><a href="#home" </div>
+  </div>
+</footer>
+
+<div class="modal-overlay" id="modalOverlay" onclick="closeModal(event)">
+  <div class="modal">
+    <button class="modal-close" onclick="closeModal()">✕</button>
+    <div class="modal-img"><img id="modalImg" src="" alt=""></div>
+    <div class="modal-body-side">
+      <div>
+        <div class="modal-tag" id="modalTag"></div>
+        <h3 class="modal-title" id="modalTitle"></h3>
+        <p class="modal-desc" id="modalDesc"></p>
+      </div>
+      <div class="modal-footer">
+        <div class="modal-price" id="modalPrice"></div>
+        <div class="modal-note">Instant digital download</div>
+        <a id="modalBuy" href="#" class="btn-primary" target="_blank">Purchase Now</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+const products = [
+  { id:1,  name:"Crimson Scream",      tag:"Dark Fantasy", desc:"A face consumed by crimson horror — raw terror distilled into digital art.",          price:"$7.00", img:"images/art_1.jpg",  url:"#" },
+  { id:2,  name:"The Last Wanderer",   tag:"Landscapes",   desc:"Across a dead world he walks, the last keeper of forgotten lore.",                   price:"$7.00", img:"images/art_2.jpg",  url:"#" },
+  { id:3,  name:"The Dissolving Mind", tag:"Mystical",     desc:"A mind unravelling into the labyrinth — chaos made beautiful.",                      price:"$7.00", img:"images/art_3.jpg",  url:"#" },
+  { id:4,  name:"Iron Captive",        tag:"Creatures",    desc:"A winged titan bound in chains, kneeling before the burning citadel.",               price:"$7.00", img:"images/art_4.jpg",  url:"#" },
+  { id:5,  name:"Shadow Covenant",     tag:"Dark Fantasy", desc:"A pact forged between flesh and shadow, sealed in the ruins of the old world.",      price:"$6.00", img:"images/art_5.jpg",  url:"#" },
+  { id:6,  name:"The Dark Forest",     tag:"Landscapes",   desc:"In the moonlit void of the cursed wood, something ancient stirs.",                   price:"$6.00", img:"images/art_6.jpg",  url:"#" },
+  { id:7,  name:"Fell Dominion",       tag:"Landscapes",   desc:"A sorcerer surveys the ruins of civilisation from the edge of oblivion.",            price:"$6.00", img:"images/art_7.jpg",  url:"#" },
+  { id:8,  name:"The Dark Sermon",     tag:"Creatures",    desc:"Between beast and believer — a confrontation beyond the veil of reason.",            price:"$6.00", img:"images/art_8.jpg",  url:"#" },
+  { id:9,  name:"Mystical Madness",    tag:"Dark Fantasy", desc:"A serpent deity coils through the enchanted forest — power dressed in shadow.",      price:"$6.00", img:"images/art_9.jpg",  url:"#" },
+  { id:10, name:"Void Sovereign",      tag:"Mystical",     desc:"A lone figure stands before the infernal city — master of all that burns.",          price:"$6.00", img:"images/art_10.jpg", url:"#" },
+  { id:11, name:"Blood Ritual",        tag:"Dark Fantasy", desc:"Wide-eyed and drenched in red — a witness to something that cannot be unseen.",      price:"$6.00", img:"images/art_11.jpg", url:"#" },
+  { id:12, name:"Neon Wraith",         tag:"Mystical",     desc:"Through the rain-slicked streets of a dying city, she carries another world within.", price:"$6.00", img:"images/art_12.jpg", url:"#" },
+  { id:13, name:"Electric Specter",    tag:"Mystical",     desc:"Neon-lit and storm-soaked — a presence that belongs to neither world.",              price:"$6.00", img:"images/art_13.jpg", url:"#" },
+  { id:14, name:"Storm Keep",          tag:"Landscapes",   desc:"Lightning crowns the cursed castle as purple mist swallows the hillside below.",     price:"$6.00", img:"images/art_14.jpg", url:"#" },
+  { id:15, name:"The Oracle's Gaze",   tag:"Dark Fantasy", desc:"Through a portal of twisted roots, a porcelain face watches without blinking.",      price:"$6.00", img:"images/art_15.jpg", url:"#" },
+  { id:16, name:"Signal from Beyond",  tag:"Mystical",     desc:"An alien intelligence transmits across the cosmos — the receiver is already listening.", price:"$6.00", img:"images/art_16.jpg", url:"#" },
+  { id:17, name:"Storm Fury",          tag:"Dark Fantasy", desc:"Standing in the eye of the maelstrom — defiant against the consuming void.",         price:"$6.00", img:"images/art_17.jpg", url:"#" },
+  { id:18, name:"Ruinborn",            tag:"Landscapes",   desc:"She runs through the burning aftermath — blade in hand, world in flames.",            price:"$6.00", img:"images/art_18.jpg", url:"#" },
+  { id:19, name:"Obsidian Child",      tag:"Dark Fantasy", desc:"Porcelain black eyes in the shadow of a haunted forest — innocence swallowed whole.", price:"$6.00", img:"images/art_19.jpg", url:"#" },
+  { id:20, name:"The Unchained",       tag:"Creatures",    desc:"Freed from his chains, the giant tears through civilisation with elemental fury.",    price:"$6.00", img:"images/art_20.jpg", url:"#" },
+];
+
+// Build product grid
+const grid = document.getElementById('productGrid');
+products.forEach(p => {
+  grid.innerHTML += `<div class="product-card" onclick="openModal(${p.id})">
+    <img src="${p.img}" alt="${p.name}" loading="lazy">
+    <div class="product-info">
+      <div class="product-tag">${p.tag}</div>
+      <div class="product-name">${p.name}</div>
+      <div class="product-desc">${p.desc}</div>
+      <div class="product-footer">
+        <span class="product-price">${p.price}</span>
+        <a class="product-buy" href="${p.url}" target="_blank" onclick="event.stopPropagation()">Buy Now</a>
+      </div>
+    </div>
+  </div>`;
+});
+
+// Build gallery
+const gallery = document.getElementById('galleryGrid');
+products.forEach(p => {
+  gallery.innerHTML += `<div class="gallery-item">
+    <img src="${p.img}" alt="${p.name}" loading="lazy">
+    <div class="gallery-overlay"><div class="gallery-view">View Piece</div></div>
+  </div>`;
+});
+
+// Cursor
+const cursor = document.getElementById('cursor');
+const dot = document.getElementById('cursorDot');
+let mx=0,my=0,cx=0,cy=0;
+document.addEventListener('mousemove', e => { mx=e.clientX; my=e.clientY; dot.style.left=mx+'px'; dot.style.top=my+'px'; });
+(function animateCursor(){ cx+=(mx-cx)*0.12; cy+=(my-cy)*0.12; cursor.style.left=cx+'px'; cursor.style.top=cy+'px'; requestAnimationFrame(animateCursor); })();
+document.querySelectorAll('a,button,.product-card,.gallery-item,.filter-btn').forEach(el=>{
+  el.addEventListener('mouseenter',()=>cursor.style.transform='translate(-50%,-50%) scale(2)');
+  el.addEventListener('mouseleave',()=>cursor.style.transform='translate(-50%,-50%) scale(1)');
+});
+
+// Nav scroll
+window.addEventListener('scroll',()=>document.getElementById('navbar').classList.toggle('scrolled',window.scrollY>50));
+
+// Reveal
+const obs = new IntersectionObserver(entries=>entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('visible');obs.unobserve(e.target);}}),{threshold:0.1});
+document.querySelectorAll('.reveal').forEach(r=>obs.observe(r));
+
+// Filters
+document.querySelectorAll('.filter-btn').forEach(btn=>btn.addEventListener('click',function(){
+  document.querySelectorAll('.filter-btn').forEach(b=>b.classList.remove('active'));
+  this.classList.add('active');
+  const f = this.textContent;
+  document.querySelectorAll('.product-card').forEach((card,i)=>{
+    card.style.display = (f==='All Works' || products[i].tag===f) ? '' : 'none';
+  });
+}));
+
+// Modal
+function openModal(id){
+  const p=products.find(x=>x.id===id); if(!p) return;
+  document.getElementById('modalImg').src=p.img;
+  document.getElementById('modalImg').alt=p.name;
+  document.getElementById('modalTag').textContent=p.tag;
+  document.getElementById('modalTitle').textContent=p.name;
+  document.getElementById('modalDesc').textContent=p.desc+' An original dark fantasy AI artwork — instant digital download.';
+  document.getElementById('modalPrice').textContent=p.price;
+  document.getElementById('modalBuy').href=p.url;
+  document.getElementById('modalOverlay').classList.add('open');
+}
+function closeModal(e){
+  if(!e||e.target===document.getElementById('modalOverlay')||e.target.closest('.modal-close'))
+    document.getElementById('modalOverlay').classList.remove('open');
+}
+document.addEventListener('keydown',e=>{if(e.key==='Escape')closeModal();});
+
+// Disable right click
+document.addEventListener('contextmenu',e=>e.preventDefault());
+</script>
+</body>
+</html>
