@@ -108,7 +108,7 @@ async function main() {
 
   // Inject products array directly into index.html so no fetch is needed
   const html = fs.readFileSync('index.html', 'utf8');
-  const injection = `products = ${JSON.stringify(updated)};\nbuildGrid();\nbuildGallery();`;
+  const injection = `products = ${JSON.stringify(updated)};\nbuildGrid();\nbuildGallery();\ncheckDeepLink();`;
   const patched = html.replace('/* __PRODUCTS_INJECT__ */', injection);
   fs.writeFileSync('index.html', patched);
 

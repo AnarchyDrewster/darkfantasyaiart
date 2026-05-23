@@ -345,7 +345,7 @@ let products = [];
 
 function buildGrid() {
   const grid = document.getElementById('productGrid');
-  grid.innerHTML = products.map(p => `<div class="product-card" onclick="openModal(${p.id})">
+  grid.innerHTML = products.map(p => `<div class="product-card" id="product-${p.id}" onclick="openModal(${p.id})">
     <img src="${p.img}" alt="${p.name}" loading="lazy">
     <div class="product-info">
       <div class="product-tag">${p.tag}</div>
@@ -409,12 +409,24 @@ function openModal(id){
   document.getElementById('modalPrice').textContent=p.price;
   document.getElementById('modalBuy').href=p.stripePaymentLink || '#';
   document.getElementById('modalOverlay').classList.add('open');
+  history.replaceState(null, '', '#product-' + id);
 }
 function closeModal(e){
-  if(!e||e.target===document.getElementById('modalOverlay')||e.target.closest('.modal-close'))
+  if(!e||e.target===document.getElementById('modalOverlay')||e.target.closest('.modal-close')){
     document.getElementById('modalOverlay').classList.remove('open');
+    history.replaceState(null, '', window.location.pathname);
+  }
 }
 document.addEventListener('keydown',e=>{if(e.key==='Escape')closeModal();});
+
+// Deep-link: open correct product if URL has #product-{id}
+function checkDeepLink(){
+  const hash = window.location.hash;
+  if(hash && hash.startsWith('#product-')){
+    const id = parseInt(hash.replace('#product-',''),10);
+    if(!isNaN(id)) setTimeout(()=>openModal(id),200);
+  }
+}
 
 // Disable right click
 document.addEventListener('contextmenu',e=>e.preventDefault());
