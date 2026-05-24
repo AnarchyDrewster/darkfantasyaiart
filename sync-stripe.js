@@ -93,6 +93,7 @@ async function syncProduct(p, cache) {
       name: p.name,
       description: p.desc,
       'metadata[site_id]': String(p.id),
+      'metadata[img]': p.img,
     });
     stripeProductId = prod.id;
     console.log(`  + Created product: ${p.name} (${stripeProductId})`);
