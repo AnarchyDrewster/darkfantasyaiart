@@ -109,7 +109,44 @@ async function main() {
   // Inject products array directly into index.html so no fetch is needed
   const html = fs.readFileSync('index.html', 'utf8');
   const injection = `products = ${JSON.stringify(updated)};\nbuildGrid();\nbuildGallery();\ncheckDeepLink();`;
-  const patched = html.replace('/* __PRODUCTS_INJECT__ */', injection);
+
+  // Build Schema.org ItemList + Product structured data for Google rich results
+  const schemaProducts = updated.map((p, i) => ({
+    '@type': 'ListItem',
+    position: i + 1,
+    item: {
+      '@type': 'Product',
+      '@id': `https://darkfantasyaiart.com/#product-${p.id}`,
+      name: p.name,
+      description: p.desc,
+      image: `https://darkfantasyaiart.com/${p.img}`,
+      url: `https://darkfantasyaiart.com/#product-${p.id}`,
+      category: p.tag,
+      brand: { '@type': 'Person', name: 'Drew' },
+      offers: {
+        '@type': 'Offer',
+        price: p.price.replace('$', ''),
+        priceCurrency: 'USD',
+        availability: 'https://schema.org/InStock',
+        seller: { '@type': 'Person', name: 'Drew' }
+      }
+    }
+  }));
+
+  const schema = {
+    '@context': 'https://schema.org',
+    '@type': 'ItemList',
+    name: "Drew's Beginning — Dark Fantasy AI Art",
+    description: 'Full collection of dark fantasy AI art available as instant digital downloads.',
+    url: 'https://darkfantasyaiart.com/',
+    numberOfItems: updated.length,
+    itemListElement: schemaProducts
+  };
+
+  const schemaTag = `<script type="application/ld+json">\n${JSON.stringify(schema, null, 2)}\n</script>`;
+  const patched = html
+    .replace('/* __PRODUCTS_INJECT__ */', injection)
+    .replace('/* __SCHEMA_INJECT__ */', schemaTag);
   fs.writeFileSync('index.html', patched);
 
   console.log('\nDone. products.json updated and index.html patched with Stripe payment links.\n');

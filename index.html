@@ -29,6 +29,33 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <meta name="msvalidate.01" content="8F387D7A63B5DC7A8933F1B86D90709F" />
 <meta name="p:domain_verify" content="e872a21ad8742c52428cc8651c43a897"/>
+
+<!-- Schema.org: WebSite + Artist -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebSite",
+      "@id": "https://darkfantasyaiart.com/#website",
+      "url": "https://darkfantasyaiart.com/",
+      "name": "Drew's Beginning",
+      "description": "Dark fantasy AI art available as instant digital downloads. Cyberpunk, biomechanical, mystical and dark fantasy pieces from $6.",
+      "publisher": { "@id": "https://darkfantasyaiart.com/#person" }
+    },
+    {
+      "@type": "Person",
+      "@id": "https://darkfantasyaiart.com/#person",
+      "name": "Drew",
+      "url": "https://darkfantasyaiart.com/",
+      "sameAs": ["https://www.pinterest.com/AnarchyDrewster"]
+    }
+  ]
+}
+</script>
+
+<!-- Schema.org: Products — injected at build time by sync-stripe.js -->
+/* __SCHEMA_INJECT__ */
   <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@400;700&family=Cinzel:wght@400;600&family=Crimson+Pro:ital,wght@0,300;0,400;1,300&display=swap" rel="stylesheet">
 <style>
   *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
