@@ -49,9 +49,44 @@ function priceCents(priceStr) {
   return Math.round(parseFloat(priceStr.replace('$', '')) * 100);
 }
 
-async function syncProduct(p) {
+// Fetch all existing Stripe products tagged with site_id metadata
+async function buildStripeCache() {
+  const cache = {}; // site_id -> { stripeProductId, stripePaymentLink }
+  let after = undefined;
+  while (true) {
+    const params = { limit: 100 };
+    if (after) params.starting_after = after;
+    const result = await stripe('GET', 'products', params);
+    for (const prod of result.data) {
+      if (prod.metadata && prod.metadata.site_id) {
+        cache[prod.metadata.site_id] = {
+          stripeProductId: prod.id,
+          stripePaymentLink: prod.metadata.payment_link || ''
+        };
+      }
+    }
+    if (!result.has_more || result.data.length === 0) break;
+    after = result.data[result.data.length - 1].id;
+  }
+  return cache;
+}
+
+// Find existing active price for a Stripe product
+async function getExistingPrice(stripeProductId) {
+  const result = await stripe('GET', 'prices', { product: stripeProductId, limit: 1, active: 'true' });
+  return result.data.length > 0 ? result.data[0].id : null;
+}
+
+async function syncProduct(p, cache) {
   let { stripeProductId, stripePriceId, stripePaymentLink } = p;
   const cents = priceCents(p.price);
+
+  // Check Stripe cache before creating anything — prevents duplicates on every build
+  const cached = cache[String(p.id)];
+  if (cached) {
+    stripeProductId = stripeProductId || cached.stripeProductId;
+    stripePaymentLink = stripePaymentLink || cached.stripePaymentLink;
+  }
 
   if (!stripeProductId) {
     const prod = await stripe('POST', 'products', {
@@ -70,12 +105,16 @@ async function syncProduct(p) {
   }
 
   if (!stripePriceId) {
-    const price = await stripe('POST', 'prices', {
-      product: stripeProductId,
-      unit_amount: cents,
-      currency: 'usd',
-    });
-    stripePriceId = price.id;
+    // Look for existing price before creating a new one
+    stripePriceId = await getExistingPrice(stripeProductId);
+    if (!stripePriceId) {
+      const price = await stripe('POST', 'prices', {
+        product: stripeProductId,
+        unit_amount: cents,
+        currency: 'usd',
+      });
+      stripePriceId = price.id;
+    }
   }
 
   if (!stripePaymentLink) {
@@ -84,6 +123,10 @@ async function syncProduct(p) {
       'line_items[0][quantity]': 1,
     });
     stripePaymentLink = link.url;
+    // Save payment link URL into product metadata so future builds can retrieve it
+    await stripe('POST', `products/${stripeProductId}`, {
+      'metadata[payment_link]': stripePaymentLink,
+    });
   }
 
   return { ...p, stripeProductId, stripePriceId, stripePaymentLink };
@@ -93,10 +136,15 @@ async function main() {
   const products = JSON.parse(fs.readFileSync('products.json', 'utf8'));
   console.log(`\nSyncing ${products.length} products to Stripe...\n`);
 
+  // Build cache of existing Stripe products to avoid creating duplicates
+  console.log('Checking existing Stripe products...');
+  const cache = await buildStripeCache();
+  console.log(`Found ${Object.keys(cache).length} existing products in Stripe.\n`);
+
   const updated = [];
   for (const p of products) {
     try {
-      const result = await syncProduct(p);
+      const result = await syncProduct(p, cache);
       updated.push(result);
     } catch (err) {
       console.error(`  ERROR ${p.name}: ${err.message}`);
