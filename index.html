@@ -341,12 +341,14 @@
       <div class="section-line"></div>
     </div>
     <p class="contact-text reveal">Questions, commissions, or just want to talk about the darkness?</p>
-    <form class="contact-form reveal" onsubmit="return false;">
-      <div class="form-group"><label class="form-label">Name</label><input type="text" class="form-input" placeholder="Your name"></div>
-      <div class="form-group"><label class="form-label">Email</label><input type="email" class="form-input" placeholder="your@email.com"></div>
-      <div class="form-group"><label class="form-label">Message</label><textarea class="form-textarea" placeholder="Write your message..."></textarea></div>
+    <form class="contact-form reveal" name="contact" method="POST" data-netlify="true" onsubmit="handleContactForm(event)">
+      <input type="hidden" name="form-name" value="contact">
+      <div class="form-group"><label class="form-label">Name</label><input type="text" name="name" class="form-input" placeholder="Your name" required></div>
+      <div class="form-group"><label class="form-label">Email</label><input type="email" name="email" class="form-input" placeholder="your@email.com" required></div>
+      <div class="form-group"><label class="form-label">Message</label><textarea name="message" class="form-textarea" placeholder="Write your message..." required></textarea></div>
       <button type="submit" class="form-submit">Send into the Void</button>
     </form>
+    <p id="contactSuccess" style="display:none; text-align:center; color:var(--gold); font-family:'Cinzel',serif; font-size:0.85rem; letter-spacing:0.15em; margin-top:1.5rem;">Your message has been sent into the void. ✦</p>
     <div class="contact-email reveal"><span>Or email:</span><a href="mailto:lyleandy@ymail.com">lyleandy@ymail.com</a></div>
   </div>
 </section>
@@ -472,6 +474,22 @@ function checkDeepLink(){
     const id = parseInt(hash.replace('#product-',''),10);
     if(!isNaN(id)) setTimeout(()=>openModal(id),200);
   }
+}
+
+// Contact form — Netlify Forms submission
+function handleContactForm(e) {
+  e.preventDefault();
+  const form = e.target;
+  fetch('/', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+    body: new URLSearchParams(new FormData(form)).toString()
+  })
+  .then(() => {
+    form.style.display = 'none';
+    document.getElementById('contactSuccess').style.display = 'block';
+  })
+  .catch(() => alert('Something went wrong. Please email lyleandy@ymail.com directly.'));
 }
 
 // Disable right click
