@@ -216,6 +216,7 @@
   .vault-item:hover .vault-item-overlay { background: rgba(5,5,7,0.65); }
   .vault-download { font-family: 'Cinzel', serif; font-size: 0.6rem; letter-spacing: 0.25em; text-transform: uppercase; color: var(--gold); border: 0.5px solid var(--gold-dim); padding: 0.6rem 1.4rem; text-decoration: none; opacity: 0; transform: translateY(8px); transition: opacity 0.3s, transform 0.3s; }
   .vault-item:hover .vault-download { opacity: 1; transform: translateY(0); }
+  .vault-license { text-align: center; color: #3a2a50; font-size: 0.68rem; letter-spacing: 0.08em; margin: 2.5rem 0 0; font-family: 'Share Tech Mono', monospace; }
   @media(max-width:768px){ .vault-locked-card { grid-template-columns: 1fr; gap: 1.5rem; padding: 2rem; } .vault-lock-icon { font-size: 2.5rem; } .vault-input { width: 100%; } }
   .modal-overlay { position: fixed; inset: 0; background: rgba(5,5,7,0.92); z-index: 800; display: flex; align-items: center; justify-content: center; opacity: 0; pointer-events: none; transition: opacity 0.3s; backdrop-filter: blur(4px); }
   .modal-overlay.open { opacity: 1; pointer-events: all; }
@@ -597,6 +598,7 @@ function openVault(images) {
         </div>
       `).join('')}
     </div>
+    <p class="vault-license">Access is licensed to the purchaser only. Redistribution revokes future access.</p>
   `;
 }
 
