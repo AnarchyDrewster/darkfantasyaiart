@@ -189,6 +189,34 @@
   .footer-legal { display: flex; gap: 2rem; }
   .footer-legal a { font-family: 'Cinzel', serif; font-size: 0.6rem; letter-spacing: 0.15em; color: var(--text-dim); text-decoration: none; text-transform: uppercase; transition: color 0.2s; }
   .footer-legal a:hover { color: var(--gold); }
+  /* ── Drew's Secret Vault ── */
+  .vault-wrap { margin: 3rem auto 4rem; max-width: 1200px; padding: 0 2rem; }
+  .vault-locked-card { background: linear-gradient(135deg, #0a0510 0%, #0d0818 50%, #080510 100%); border: 0.5px solid #3a1a5a; padding: 3.5rem; display: grid; grid-template-columns: auto 1fr; gap: 3rem; align-items: center; position: relative; overflow: hidden; }
+  .vault-locked-card::before { content: ''; position: absolute; inset: 0; background: radial-gradient(ellipse at 20% 50%, rgba(120,50,180,0.08) 0%, transparent 60%); pointer-events: none; }
+  .vault-lock-icon { font-size: 4rem; opacity: 0.7; filter: drop-shadow(0 0 20px rgba(150,80,220,0.4)); }
+  .vault-eyebrow { font-family: 'Cinzel', serif; font-size: 0.6rem; letter-spacing: 0.35em; text-transform: uppercase; color: #9060c0; margin: 0 0 0.6rem; }
+  .vault-title { font-family: 'Cinzel', serif; font-size: 1.8rem; color: var(--text); margin: 0 0 1rem; }
+  .vault-desc { color: var(--text-dim); font-size: 0.95rem; line-height: 1.7; margin: 0 0 2rem; max-width: 580px; }
+  .vault-actions { display: flex; align-items: center; gap: 1.5rem; flex-wrap: wrap; }
+  .vault-code-toggle { font-family: 'Cinzel', serif; font-size: 0.6rem; letter-spacing: 0.2em; text-transform: uppercase; color: #7a50a0; background: transparent; border: 0.5px solid #3a1a5a; padding: 0.6rem 1.4rem; cursor: pointer; transition: all 0.2s; }
+  .vault-code-toggle:hover { color: var(--gold); border-color: var(--gold-dim); }
+  .vault-form { margin-top: 1.5rem; display: none; }
+  .vault-form.open { display: flex; gap: 0.8rem; align-items: center; flex-wrap: wrap; }
+  .vault-input { background: #07050f; border: 0.5px solid #3a1a5a; color: var(--text); font-family: 'Share Tech Mono', monospace; font-size: 0.75rem; padding: 0.7rem 1.2rem; width: 420px; max-width: 100%; outline: none; letter-spacing: 0.05em; }
+  .vault-input:focus { border-color: #7a50a0; }
+  .vault-input::placeholder { color: #4a3060; }
+  .vault-error { color: #c06060; font-size: 0.8rem; margin-top: 0.5rem; width: 100%; }
+  .vault-open-header { margin-bottom: 2.5rem; }
+  .vault-open-header .vault-eyebrow { color: var(--gold); }
+  .vault-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 1.5px; }
+  .vault-item { position: relative; overflow: hidden; aspect-ratio: 1; }
+  .vault-item img { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform 0.4s; }
+  .vault-item:hover img { transform: scale(1.04); }
+  .vault-item-overlay { position: absolute; inset: 0; background: rgba(5,5,7,0); display: flex; align-items: center; justify-content: center; transition: background 0.3s; }
+  .vault-item:hover .vault-item-overlay { background: rgba(5,5,7,0.65); }
+  .vault-download { font-family: 'Cinzel', serif; font-size: 0.6rem; letter-spacing: 0.25em; text-transform: uppercase; color: var(--gold); border: 0.5px solid var(--gold-dim); padding: 0.6rem 1.4rem; text-decoration: none; opacity: 0; transform: translateY(8px); transition: opacity 0.3s, transform 0.3s; }
+  .vault-item:hover .vault-download { opacity: 1; transform: translateY(0); }
+  @media(max-width:768px){ .vault-locked-card { grid-template-columns: 1fr; gap: 1.5rem; padding: 2rem; } .vault-lock-icon { font-size: 2.5rem; } .vault-input { width: 100%; } }
   .modal-overlay { position: fixed; inset: 0; background: rgba(5,5,7,0.92); z-index: 800; display: flex; align-items: center; justify-content: center; opacity: 0; pointer-events: none; transition: opacity 0.3s; backdrop-filter: blur(4px); }
   .modal-overlay.open { opacity: 1; pointer-events: all; }
   .modal { background: var(--surface); border: 0.5px solid var(--border); max-width: 1100px; width: 92%; display: grid; grid-template-columns: 2fr 1fr; overflow: hidden; position: relative; transform: translateY(20px); transition: transform 0.3s; }
@@ -290,6 +318,30 @@
     <button class="filter-btn">Cyberpunk</button>
     <button class="filter-btn">Color Beyond Flesh</button>
     <button class="filter-btn">Biomechanical</button>
+  </div>
+
+  <!-- Drew's Secret Vault -->
+  <div class="vault-wrap reveal" id="vault">
+    <div id="vaultLocked">
+      <div class="vault-locked-card">
+        <div class="vault-lock-icon">🔐</div>
+        <div>
+          <p class="vault-eyebrow">Members Only</p>
+          <h3 class="vault-title">Drew's Secret Vault</h3>
+          <p class="vault-desc">Exclusive content not available anywhere else. A private collection of high-resolution works — available only to those with access. One-time purchase, yours forever.</p>
+          <div class="vault-actions">
+            <a href=/* __VIP_PAYMENT_LINK__ */ class="btn-primary" target="_blank">Unlock Access — $15</a>
+            <button class="vault-code-toggle" onclick="toggleVaultForm()">I have a code</button>
+          </div>
+          <div class="vault-form" id="vaultForm">
+            <input type="text" id="vaultCodeInput" class="vault-input" placeholder="Paste your access code here" autocomplete="off" />
+            <button class="btn-primary" onclick="verifyVaultCode()">Enter</button>
+            <p class="vault-error" id="vaultError"></p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div id="vaultOpen" style="display:none;"></div>
   </div>
 
   <div class="product-grid reveal" id="productGrid"></div>
@@ -494,6 +546,76 @@ function handleContactForm(e) {
 
 // Disable right click
 document.addEventListener('contextmenu',e=>e.preventDefault());
+
+// ── Drew's Secret Vault ──────────────────────────────────────────────────────
+function toggleVaultForm() {
+  const f = document.getElementById('vaultForm');
+  f.classList.toggle('open');
+  if (f.classList.contains('open')) document.getElementById('vaultCodeInput').focus();
+}
+
+async function verifyVaultCode() {
+  const token = document.getElementById('vaultCodeInput').value.trim();
+  const errEl = document.getElementById('vaultError');
+  errEl.textContent = '';
+  if (!token) { errEl.textContent = 'Please paste your access code.'; return; }
+  try {
+    const res = await fetch('/.netlify/functions/verify-vip', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ token })
+    });
+    const data = await res.json();
+    if (res.ok && data.success) {
+      localStorage.setItem('vip_token', token);
+      openVault(data.images);
+    } else {
+      errEl.textContent = data.error || 'Invalid access code. Please check and try again.';
+    }
+  } catch(e) {
+    errEl.textContent = 'Connection error. Please try again.';
+  }
+}
+
+function openVault(images) {
+  document.getElementById('vaultLocked').style.display = 'none';
+  const open = document.getElementById('vaultOpen');
+  open.style.display = 'block';
+  open.innerHTML = `
+    <div class="vault-open-header">
+      <p class="vault-eyebrow">✦ Access Granted</p>
+      <h3 class="vault-title">Drew's Secret Vault</h3>
+      <p class="vault-desc">Your private collection. All ${images.length} works available as full-resolution PNG downloads.</p>
+    </div>
+    <div class="vault-grid">
+      ${images.map(img => `
+        <div class="vault-item">
+          <img src="${img.img}" alt="${img.name}" loading="lazy">
+          <div class="vault-item-overlay">
+            <a href="${img.img}" download="${img.name}.png" class="vault-download">↓ Download</a>
+          </div>
+        </div>
+      `).join('')}
+    </div>
+  `;
+}
+
+// Auto-unlock if previously verified
+(function() {
+  const saved = localStorage.getItem('vip_token');
+  if (!saved) return;
+  fetch('/.netlify/functions/verify-vip', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ token: saved })
+  }).then(r => r.json()).then(d => { if (d.success) openVault(d.images); })
+    .catch(() => { localStorage.removeItem('vip_token'); });
+})();
+
+// Deep-link: darkfantasyaiart.com/#vault
+if (window.location.hash === '#vault') {
+  setTimeout(() => document.getElementById('vault')?.scrollIntoView({ behavior: 'smooth' }), 400);
+}
 
 // Products injected at build time by sync-stripe.js
 /* __PRODUCTS_INJECT__ */

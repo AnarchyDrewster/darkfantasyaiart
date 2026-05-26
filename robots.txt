@@ -1,4 +1,6 @@
 User-agent: *
 Allow: /
+Disallow: /images/vip/
+Disallow: /.netlify/
 
 Sitemap: https://darkfantasyaiart.com/sitemap.xml

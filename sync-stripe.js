@@ -198,6 +198,75 @@ async function main() {
     .replace('/* __SCHEMA_INJECT__ */', schemaTag);
   fs.writeFileSync('index.html', patched);
 
+  // ── VIP Access product sync ──────────────────────────────────────────────
+  console.log('\nSyncing VIP Access product...');
+  const vipConfig = {
+    name: "Drew's Secret Vault — VIP Access",
+    desc: "Unlock exclusive members-only content on darkfantasyaiart.com. Instant access granted via email.",
+    price: 1500, // $15.00 in cents
+    album: 'vault',
+  };
+
+  // Check if VIP product already exists
+  let vipProductId = null;
+  let vipPriceId = null;
+  let vipPaymentLink = null;
+
+  const allProducts = await stripe('GET', 'products', { limit: 100 });
+  for (const prod of allProducts.data) {
+    if (prod.metadata && prod.metadata.type === 'vip_access' && prod.metadata.album === vipConfig.album) {
+      vipProductId = prod.id;
+      vipPaymentLink = prod.metadata.payment_link || null;
+      break;
+    }
+  }
+
+  if (!vipProductId) {
+    const prod = await stripe('POST', 'products', {
+      name: vipConfig.name,
+      description: vipConfig.desc,
+      'metadata[type]': 'vip_access',
+      'metadata[album]': vipConfig.album,
+    });
+    vipProductId = prod.id;
+    console.log(`  + Created VIP product: ${vipProductId}`);
+  } else {
+    console.log(`  ~ VIP product already exists: ${vipProductId}`);
+  }
+
+  if (!vipPriceId) {
+    const prices = await stripe('GET', 'prices', { product: vipProductId, limit: 1, active: 'true' });
+    if (prices.data.length > 0) {
+      vipPriceId = prices.data[0].id;
+    } else {
+      const price = await stripe('POST', 'prices', {
+        product: vipProductId,
+        unit_amount: vipConfig.price,
+        currency: 'usd',
+      });
+      vipPriceId = price.id;
+    }
+  }
+
+  if (!vipPaymentLink) {
+    const link = await stripe('POST', 'payment_links', {
+      'line_items[0][price]': vipPriceId,
+      'line_items[0][quantity]': 1,
+    });
+    vipPaymentLink = link.url;
+    await stripe('POST', `products/${vipProductId}`, {
+      'metadata[payment_link]': vipPaymentLink,
+    });
+    console.log(`  + VIP payment link created: ${vipPaymentLink}`);
+  } else {
+    console.log(`  ~ VIP payment link exists: ${vipPaymentLink}`);
+  }
+
+  // Inject VIP payment link into index.html
+  const htmlWithVip = fs.readFileSync('index.html', 'utf8');
+  const patchedWithVip = htmlWithVip.replace('/* __VIP_PAYMENT_LINK__ */', `"${vipPaymentLink}"`);
+  fs.writeFileSync('index.html', patchedWithVip);
+
   console.log('\nDone. products.json updated and index.html patched with Stripe payment links.\n');
 }
 

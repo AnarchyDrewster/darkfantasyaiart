@@ -1,3 +1,10 @@
 [build]
   command = "node sync-stripe.js"
   publish = "."
+
+# Block crawlers from VIP image paths
+[[headers]]
+  for = "/images/vip/*"
+  [headers.values]
+    X-Robots-Tag = "noindex, nofollow, noarchive"
+    Cache-Control = "no-store"
