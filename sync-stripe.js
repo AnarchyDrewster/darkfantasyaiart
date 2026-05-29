@@ -122,6 +122,8 @@ async function syncProduct(p, cache) {
     const link = await stripe('POST', 'payment_links', {
       'line_items[0][price]': stripePriceId,
       'line_items[0][quantity]': 1,
+      'after_completion[type]': 'redirect',
+      'after_completion[redirect][url]': 'https://darkfantasyaiart.com/thank-you.html',
     });
     stripePaymentLink = link.url;
     // Save payment link URL into product metadata so future builds can retrieve it
@@ -252,6 +254,8 @@ async function main() {
     const link = await stripe('POST', 'payment_links', {
       'line_items[0][price]': vipPriceId,
       'line_items[0][quantity]': 1,
+      'after_completion[type]': 'redirect',
+      'after_completion[redirect][url]': 'https://darkfantasyaiart.com/thank-you.html',
     });
     vipPaymentLink = link.url;
     await stripe('POST', `products/${vipProductId}`, {
