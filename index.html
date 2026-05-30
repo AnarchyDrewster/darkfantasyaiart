@@ -105,6 +105,21 @@
   .hero-scroll span { font-family: 'Cinzel', serif; font-size: 0.6rem; letter-spacing: 0.4em; color: var(--text-dim); text-transform: uppercase; }
   .scroll-line { width: 0.5px; height: 60px; background: linear-gradient(to bottom, var(--gold-dim), transparent); animation: scrollPulse 2s ease infinite; }
   .rune-divider { text-align: center; padding: 1rem 0; color: var(--gold-dim); font-size: 1.2rem; letter-spacing: 1rem; opacity: 0.6; }
+  /* Merch teaser section */
+  #merch-teaser { padding: 5rem 4rem; background: linear-gradient(180deg, var(--void) 0%, var(--surface) 50%, var(--void) 100%); text-align: center; border-top: 0.5px solid var(--border); border-bottom: 0.5px solid var(--border); }
+  .merch-teaser-eyebrow { font-family: 'Cinzel', serif; font-size: 0.65rem; letter-spacing: 0.5em; color: var(--gold); text-transform: uppercase; margin-bottom: 1rem; }
+  .merch-teaser-title { font-family: 'Cinzel Decorative', serif; font-size: clamp(1.4rem, 3vw, 2rem); color: var(--text); margin-bottom: 0.75rem; }
+  .merch-teaser-title .accent { color: var(--gold); }
+  .merch-teaser-sub { font-size: 1rem; color: var(--text-dim); font-style: italic; margin-bottom: 3rem; }
+  .merch-items { display: flex; justify-content: center; flex-wrap: wrap; gap: 1.5rem; margin-bottom: 3rem; }
+  .merch-item { display: flex; flex-direction: column; align-items: center; gap: 0.6rem; padding: 1.5rem 2rem; border: 0.5px solid var(--border); background: var(--surface2); min-width: 130px; transition: border-color 0.3s, transform 0.3s; }
+  .merch-item:hover { border-color: var(--gold); transform: translateY(-4px); }
+  .merch-item-icon { font-size: 1.8rem; line-height: 1; }
+  .merch-item-label { font-family: 'Cinzel', serif; font-size: 0.6rem; letter-spacing: 0.25em; text-transform: uppercase; color: var(--text-dim); }
+  .merch-more { font-family: 'Cinzel', serif; font-size: 0.6rem; letter-spacing: 0.3em; text-transform: uppercase; color: var(--gold-dim); margin-bottom: 2.5rem; }
+  .merch-teaser-btn { font-family: 'Cinzel', serif; font-size: 0.7rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--void); background: var(--gold); padding: 0.9rem 2.5rem; text-decoration: none; display: inline-block; transition: background 0.2s, transform 0.2s; }
+  .merch-teaser-btn:hover { background: var(--gold-light); transform: translateY(-2px); }
+  @media (max-width: 600px) { #merch-teaser { padding: 4rem 1.5rem; } .merch-items { gap: 1rem; } .merch-item { padding: 1.2rem 1.4rem; min-width: 110px; } }
   .section-header { text-align: center; margin-bottom: 4rem; }
   .section-eyebrow { font-family: 'Cinzel', serif; font-size: 0.65rem; letter-spacing: 0.5em; color: var(--gold); text-transform: uppercase; margin-bottom: 1rem; }
   .section-title { font-family: 'Cinzel Decorative', serif; font-size: clamp(1.8rem, 4vw, 3rem); color: var(--text); line-height: 1.2; }
@@ -304,6 +319,34 @@
   <span style="color:rgba(201,168,76,0.25);margin:0 1.5rem;">|</span>
   <a href="https://www.pinterest.com/AnarchyDrewster/" target="_blank" rel="noopener">✦ Follow on Pinterest ✦</a>
 </div>
+
+<section id="merch-teaser" class="reveal">
+  <p class="merch-teaser-eyebrow">The Dark Fantasy Shop</p>
+  <h2 class="merch-teaser-title">Wear the <span class="accent">Darkness</span></h2>
+  <p class="merch-teaser-sub">Bring the art into your world — printed on premium goods, crafted for the bold.</p>
+  <div class="merch-items">
+    <div class="merch-item">
+      <span class="merch-item-icon">🖼️</span>
+      <span class="merch-item-label">Canvas Wall Art</span>
+    </div>
+    <div class="merch-item">
+      <span class="merch-item-icon">☕</span>
+      <span class="merch-item-label">Coffee Mugs</span>
+    </div>
+    <div class="merch-item">
+      <span class="merch-item-icon">👕</span>
+      <span class="merch-item-label">T-Shirts</span>
+    </div>
+    <div class="merch-item">
+      <span class="merch-item-icon">🧩</span>
+      <span class="merch-item-label">Puzzles</span>
+    </div>
+  </div>
+  <p class="merch-more">✦ &nbsp; and more &nbsp; ✦</p>
+  <a href="https://dark-fantasy-ai-art.myshopify.com" target="_blank" rel="noopener" class="merch-teaser-btn">Visit the Shop ↗</a>
+</section>
+
+<div class="rune-divider">✦ ✦ ✦</div>
 
 <section id="shop">
   <div class="section-header reveal">
