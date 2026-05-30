@@ -724,5 +724,49 @@
     "stripeProductId": "",
     "stripePriceId": "",
     "stripePaymentLink": ""
+  },
+  {
+    "id": 69,
+    "name": "Imaginary Soul",
+    "tag": "Punk/Goth",
+    "desc": "Lost in the space between what was felt and what was real — a soul that only exists in the dark.",
+    "price": "$7.00",
+    "img": "images/art_69.png",
+    "stripeProductId": "",
+    "stripePriceId": "",
+    "stripePaymentLink": ""
+  },
+  {
+    "id": 70,
+    "name": "Psycho Super Sick",
+    "tag": "Punk/Goth",
+    "desc": "Chains, ink, and a grin that dares you to look away. Unhinged and unapologetic.",
+    "price": "$7.00",
+    "img": "images/art_70.png",
+    "stripeProductId": "",
+    "stripePriceId": "",
+    "stripePaymentLink": ""
+  },
+  {
+    "id": 71,
+    "name": "Demon Heart",
+    "tag": "Punk/Goth",
+    "desc": "She smiles between the skulls — marked, tattooed, and at home in the dark.",
+    "price": "$7.00",
+    "img": "images/art_71.png",
+    "stripeProductId": "",
+    "stripePriceId": "",
+    "stripePaymentLink": ""
+  },
+  {
+    "id": 72,
+    "name": "Sacred Place",
+    "tag": "Punk/Goth",
+    "desc": "Horns and silence. A devotion carved in skin, surrendered to somewhere no light follows.",
+    "price": "$7.00",
+    "img": "images/art_72.png",
+    "stripeProductId": "",
+    "stripePriceId": "",
+    "stripePaymentLink": ""
   }
 ]
