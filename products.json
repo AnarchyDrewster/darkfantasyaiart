@@ -768,5 +768,38 @@
     "stripeProductId": "",
     "stripePriceId": "",
     "stripePaymentLink": ""
+  },
+  {
+    "id": 73,
+    "name": "Urban Frequency",
+    "tag": "Cyberpunk",
+    "desc": "Locked into the city's signal — she moves on a wavelength the surface world will never intercept.",
+    "price": "$6.00",
+    "img": "images/art_73.png",
+    "stripeProductId": "",
+    "stripePriceId": "",
+    "stripePaymentLink": ""
+  },
+  {
+    "id": 74,
+    "name": "Constant Wonder",
+    "tag": "Cyberpunk",
+    "desc": "In a city that never stops moving, she found a frequency of her own — steady, electric, unshakeable.",
+    "price": "$6.00",
+    "img": "images/art_74.png",
+    "stripeProductId": "",
+    "stripePriceId": "",
+    "stripePaymentLink": ""
+  },
+  {
+    "id": 75,
+    "name": "Electric Outlaw",
+    "tag": "Cyberpunk",
+    "desc": "Off the grid, outside the law, and crackling with voltage — the city wants her caught and can't get close.",
+    "price": "$6.00",
+    "img": "images/art_75.png",
+    "stripeProductId": "",
+    "stripePriceId": "",
+    "stripePaymentLink": ""
   }
 ]
