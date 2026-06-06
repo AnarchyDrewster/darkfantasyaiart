@@ -17,7 +17,7 @@ const qs    = require('querystring');
 
 const CLIENT_KEY    = process.env.TIKTOK_CLIENT_KEY;
 const CLIENT_SECRET = process.env.TIKTOK_CLIENT_SECRET;
-const REDIRECT_URI  = 'http://localhost:3000/callback';
+const REDIRECT_URI  = 'https://darkfantasyaiart.com/callback';
 
 if (!CLIENT_KEY || !CLIENT_SECRET) {
   console.error('\nERROR: Set TIKTOK_CLIENT_KEY and TIKTOK_CLIENT_SECRET environment variables first.\n');
