@@ -8,7 +8,12 @@ const https = require('https');
 const fs = require('fs');
 const qs = require('querystring');
 
-const KEY = process.env.STRIPE_SECRET_KEY;
+const KEY             = process.env.STRIPE_SECRET_KEY;
+const TIKTOK_TOKEN    = process.env.TIKTOK_ACCESS_TOKEN;
+const TIKTOK_REFRESH  = process.env.TIKTOK_REFRESH_TOKEN;
+const TIKTOK_CK       = process.env.TIKTOK_CLIENT_KEY;
+const TIKTOK_CS       = process.env.TIKTOK_CLIENT_SECRET;
+
 if (!KEY) { console.error('STRIPE_SECRET_KEY not set'); process.exit(1); }
 
 function stripe(method, path, params = {}) {
@@ -76,6 +81,128 @@ async function getExistingPrice(stripeProductId) {
   const result = await stripe('GET', 'prices', { product: stripeProductId, limit: 1, active: 'true' });
   return result.data.length > 0 ? result.data[0].id : null;
 }
+
+// ── TikTok helpers ───────────────────────────────────────────────────────────
+
+function tiktokRequest(method, path, body, token) {
+  return new Promise((resolve, reject) => {
+    const payload = body ? JSON.stringify(body) : '';
+    const options = {
+      hostname: 'open.tiktokapis.com',
+      path,
+      method,
+      headers: {
+        'Authorization': `Bearer ${token}`,
+        'Content-Type': 'application/json; charset=UTF-8',
+        ...(payload ? { 'Content-Length': Buffer.byteLength(payload) } : {}),
+      },
+    };
+    const req = https.request(options, res => {
+      let data = '';
+      res.on('data', c => (data += c));
+      res.on('end', () => {
+        try { resolve(JSON.parse(data)); }
+        catch (e) { reject(new Error('TikTok parse error: ' + data)); }
+      });
+    });
+    req.on('error', reject);
+    if (payload) req.write(payload);
+    req.end();
+  });
+}
+
+async function refreshTikTokToken() {
+  if (!TIKTOK_REFRESH || !TIKTOK_CK || !TIKTOK_CS) return null;
+  const body = `client_key=${encodeURIComponent(TIKTOK_CK)}&client_secret=${encodeURIComponent(TIKTOK_CS)}&grant_type=refresh_token&refresh_token=${encodeURIComponent(TIKTOK_REFRESH)}`;
+  return new Promise((resolve, reject) => {
+    const options = {
+      hostname: 'open.tiktokapis.com',
+      path: '/v2/oauth/token/',
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/x-www-form-urlencoded',
+        'Content-Length': Buffer.byteLength(body),
+      },
+    };
+    const req = https.request(options, res => {
+      let data = '';
+      res.on('data', c => (data += c));
+      res.on('end', () => {
+        try {
+          const t = JSON.parse(data);
+          resolve(t.access_token || null);
+        } catch (e) { resolve(null); }
+      });
+    });
+    req.on('error', () => resolve(null));
+    req.write(body);
+    req.end();
+  });
+}
+
+async function postNewProductsToTikTok(newProducts) {
+  if (!newProducts.length) return;
+
+  let token = TIKTOK_TOKEN;
+  if (!token) {
+    console.log('\nTIKTOK_ACCESS_TOKEN not set — skipping TikTok posts.');
+    console.log('Run tiktok-auth.js once to get your tokens, then add them to Netlify env vars.\n');
+    return;
+  }
+
+  console.log(`\n📱 Posting ${newProducts.length} new product(s) to TikTok...\n`);
+
+  for (const p of newProducts) {
+    // Use GitHub raw URL — image is already pushed before build runs
+    const ext = p.img.split('.').pop();
+    const imageUrl = `https://raw.githubusercontent.com/AnarchyDrewster/darkfantasyaiart/master/${p.img}`;
+    const caption = `${p.name} 🖤\n${p.desc}\n\n🔗 darkfantasyaiart.com/#product-${p.id}\n\n#darkfantasyart #aiart #digitalart #darkart #fantasyart #aiartwork #darkfantasy`;
+
+    const payload = {
+      post_info: {
+        title: caption,
+        privacy_level: 'PUBLIC_TO_EVERYONE',
+        disable_duet: false,
+        disable_comment: false,
+        disable_stitch: false,
+        auto_add_music: true,
+      },
+      source_info: {
+        source: 'PULL_FROM_URL',
+        photo_cover_index: 0,
+        photo_images: [imageUrl],
+      },
+      post_mode: 'DIRECT_POST',
+      media_type: 'PHOTO',
+    };
+
+    try {
+      let result = await tiktokRequest('POST', '/v2/post/publish/content/init/', payload, token);
+
+      // If token expired, try refreshing once
+      if (result.error && result.error.code === 'access_token_invalid') {
+        console.log('  Access token expired — attempting refresh...');
+        const newToken = await refreshTikTokToken();
+        if (newToken) {
+          token = newToken;
+          result = await tiktokRequest('POST', '/v2/post/publish/content/init/', payload, token);
+        }
+      }
+
+      if (result.error && result.error.code !== 'ok') {
+        console.error(`  ❌ TikTok error for "${p.name}": ${result.error.message} (${result.error.code})`);
+      } else {
+        console.log(`  ✅ TikTok post published: "${p.name}"`);
+        console.log(`     🔗 https://darkfantasyaiart.com/#product-${p.id}`);
+      }
+    } catch (err) {
+      console.error(`  ❌ TikTok request failed for "${p.name}": ${err.message}`);
+    }
+  }
+  console.log('');
+}
+
+// ── Stripe sync ──────────────────────────────────────────────────────────────
 
 async function syncProduct(p, cache) {
   let { stripeProductId, stripePriceId, stripePaymentLink } = p;
@@ -145,10 +272,14 @@ async function main() {
   console.log(`Found ${Object.keys(cache).length} existing products in Stripe.\n`);
 
   const updated = [];
+  const newProducts = []; // track genuinely new products for TikTok
+
   for (const p of products) {
     try {
+      const isNew = !cache[String(p.id)] && !p.stripeProductId;
       const result = await syncProduct(p, cache);
       updated.push(result);
+      if (isNew) newProducts.push(result);
     } catch (err) {
       console.error(`  ERROR ${p.name}: ${err.message}`);
       updated.push(p);
@@ -270,6 +401,9 @@ async function main() {
   const htmlWithVip = fs.readFileSync('index.html', 'utf8');
   const patchedWithVip = htmlWithVip.replace('/* __VIP_PAYMENT_LINK__ */', `"${vipPaymentLink}"`);
   fs.writeFileSync('index.html', patchedWithVip);
+
+  // Post any new products to TikTok
+  await postNewProductsToTikTok(newProducts);
 
   console.log('\nDone. products.json updated and index.html patched with Stripe payment links.\n');
 }
