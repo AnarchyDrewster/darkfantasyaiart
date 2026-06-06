@@ -801,5 +801,16 @@
     "stripeProductId": "",
     "stripePriceId": "",
     "stripePaymentLink": ""
+  },
+  {
+    "id": 76,
+    "name": "Prisma-9",
+    "tag": "Biomechanical",
+    "desc": "Unit nine in a spectrum of synthetic life — light fractured through circuitry, beauty assembled from cold precision.",
+    "price": "$6.00",
+    "img": "images/art_76.png",
+    "stripeProductId": "",
+    "stripePriceId": "",
+    "stripePaymentLink": ""
   }
 ]
