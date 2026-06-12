@@ -232,17 +232,25 @@ async function syncProduct(p, cache) {
     console.log(`  ~ Updated product: ${p.name}`);
   }
 
-  if (!stripePriceId) {
-    // Look for existing price before creating a new one
-    stripePriceId = await getExistingPrice(stripeProductId);
-    if (!stripePriceId) {
-      const price = await stripe('POST', 'prices', {
-        product: stripeProductId,
-        unit_amount: cents,
-        currency: 'usd',
-      });
-      stripePriceId = price.id;
+  // Always verify the existing price matches the desired amount — update if not
+  const existingPriceResult = await stripe('GET', 'prices', { product: stripeProductId, limit: 1, active: 'true' });
+  const existingPrice = existingPriceResult.data.length > 0 ? existingPriceResult.data[0] : null;
+
+  if (existingPrice && existingPrice.unit_amount === cents) {
+    stripePriceId = existingPrice.id;
+  } else {
+    if (existingPrice) {
+      // Deactivate old price so it no longer appears on payment links
+      await stripe('POST', `prices/${existingPrice.id}`, { active: 'false' });
+      console.log(`  $ Price updated (${existingPrice.unit_amount}¢ → ${cents}¢) for: ${p.name}`);
+      stripePaymentLink = null; // force a new payment link with the correct price
     }
+    const price = await stripe('POST', 'prices', {
+      product: stripeProductId,
+      unit_amount: cents,
+      currency: 'usd',
+    });
+    stripePriceId = price.id;
   }
 
   if (!stripePaymentLink) {
