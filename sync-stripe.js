@@ -298,7 +298,7 @@ async function main() {
 
   // Inject products array directly into index.html so no fetch is needed
   const html = fs.readFileSync('index.html', 'utf8');
-  const injection = `products = ${JSON.stringify(updated)};\nbuildGrid();\nbuildGallery();\ncheckDeepLink();`;
+  const injection = `products = ${JSON.stringify([...updated].reverse())};\nbuildGrid();\nbuildGallery();\ncheckDeepLink();`;
 
   // Build Schema.org ItemList + Product structured data for Google rich results
   const schemaProducts = updated.map((p, i) => ({
