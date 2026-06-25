@@ -308,7 +308,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <li><a href="#gallery">Gallery</a></li>
     <li><a href="#about">About</a></li>
     <li><a href="#contact">Contact</a></li>
-    <li><a href="https://dark-fantasy-ai-art.myshopify.com" class="nav-merch" target="_blank" rel="noopener">Merch ↗</a></li>
+    <li><a href="https://dark-fantasy-ai-art.myshopify.com" class="nav-merch" target="_blank" rel="noopener" onclick="trackOutbound('nav_merch')">Merch ↗</a></li>
     <li><a href="https://www.pinterest.com/AnarchyDrewster/" class="nav-merch" target="_blank" rel="noopener">Pinterest ↗</a></li>
   </ul>
 </nav>
@@ -331,7 +331,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <div class="rune-divider">✦ ✦ ✦</div>
 
 <div class="merch-strip">
-  <a href="https://dark-fantasy-ai-art.myshopify.com" target="_blank" rel="noopener">✦ Merch Available — Browse the Collection ✦</a>
+  <a href="https://dark-fantasy-ai-art.myshopify.com" target="_blank" rel="noopener" onclick="trackOutbound('merch_strip')">✦ Merch Available — Browse the Collection ✦</a>
   <span style="color:rgba(201,168,76,0.25);margin:0 1.5rem;">|</span>
   <a href="https://www.pinterest.com/AnarchyDrewster/" target="_blank" rel="noopener">✦ Follow on Pinterest ✦</a>
 </div>
@@ -341,25 +341,25 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   <h2 class="merch-teaser-title">Wear the <span class="accent">Darkness</span></h2>
   <p class="merch-teaser-sub">Bring the art into your world — printed on premium goods, crafted for the bold.</p>
   <div class="merch-items">
-    <a href="https://dark-fantasy-ai-art.myshopify.com/products/cyberpunk-portrait-wall-calendar-2026-futuristic-neon-art-calendar?variant=48042639524052" target="_blank" class="merch-item merch-item--img">
+    <a href="https://dark-fantasy-ai-art.myshopify.com/products/cyberpunk-portrait-wall-calendar-2026-futuristic-neon-art-calendar?variant=48042639524052" target="_blank" class="merch-item merch-item--img" onclick="trackOutbound('merch_calendar')">
       <img src="images/merch-calendar.webp" alt="Cyberpunk Portrait Wall Calendar 2026" class="merch-item-img">
       <span class="merch-item-label">2026 Calendar</span>
     </a>
-    <a href="https://dark-fantasy-ai-art.myshopify.com/products/goth-tattoo-girl-accent-coffee-mug-11-15oz-black-lined-ceramic?variant=48019971014868" target="_blank" class="merch-item merch-item--img">
+    <a href="https://dark-fantasy-ai-art.myshopify.com/products/goth-tattoo-girl-accent-coffee-mug-11-15oz-black-lined-ceramic?variant=48019971014868" target="_blank" class="merch-item merch-item--img" onclick="trackOutbound('merch_mug')">
       <img src="images/merch-mug.webp" alt="Goth Tattoo Girl Coffee Mug" class="merch-item-img">
       <span class="merch-item-label">Coffee Mugs</span>
     </a>
-    <a href="https://dark-fantasy-ai-art.myshopify.com/products/psychedelic-head-profile-tee-colorful-neon-abstract-portrait-t-shirt?variant=48019715424468" target="_blank" class="merch-item merch-item--img">
+    <a href="https://dark-fantasy-ai-art.myshopify.com/products/psychedelic-head-profile-tee-colorful-neon-abstract-portrait-t-shirt?variant=48019715424468" target="_blank" class="merch-item merch-item--img" onclick="trackOutbound('merch_tshirt')">
       <img src="images/merch-tshirt.webp" alt="Psychedelic Head Profile T-Shirt" class="merch-item-img">
       <span class="merch-item-label">T-Shirts</span>
     </a>
-    <a href="https://dark-fantasy-ai-art.myshopify.com/products/vibrant-neon-portrait-puzzle-color-burst-head-110-1014-piece-art-puzzle?variant=48048019" target="_blank" class="merch-item merch-item--img">
+    <a href="https://dark-fantasy-ai-art.myshopify.com/products/vibrant-neon-portrait-puzzle-color-burst-head-110-1014-piece-art-puzzle?variant=48048019" target="_blank" class="merch-item merch-item--img" onclick="trackOutbound('merch_puzzle')">
       <img src="images/merch-puzzle.webp" alt="Vibrant Neon Portrait Puzzle" class="merch-item-img">
       <span class="merch-item-label">Puzzles</span>
     </a>
   </div>
   <p class="merch-more">✦ &nbsp; and more &nbsp; ✦</p>
-  <a href="https://dark-fantasy-ai-art.myshopify.com" target="_blank" rel="noopener" class="merch-teaser-btn">Visit the Shop ↗</a>
+  <a href="https://dark-fantasy-ai-art.myshopify.com" target="_blank" rel="noopener" class="merch-teaser-btn" onclick="trackOutbound('merch_teaser_btn')">Visit the Shop ↗</a>
 </section>
 
 <div class="rune-divider">✦ ✦ ✦</div>
@@ -523,13 +523,17 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       <div class="modal-footer">
         <div class="modal-price" id="modalPrice"></div>
         <div class="modal-note">Instant digital download</div>
-        <a id="modalBuy" href="#" class="btn-primary" target="_blank">Purchase Now</a>
+        <a id="modalBuy" href="#" class="btn-primary" target="_blank" onclick="trackBuyClick(document.getElementById('modalTitle').textContent)">Purchase Now</a>
       </div>
     </div>
   </div>
 </div>
 
 <script>
+window.dataLayer = window.dataLayer || [];
+function trackOutbound(label){ window.dataLayer.push({event:'outbound_click', outbound_label:label}); }
+function trackBuyClick(productName){ window.dataLayer.push({event:'buy_click', product_name:productName}); }
+
 let products = [];
 
 function buildGrid() {
@@ -542,7 +546,7 @@ function buildGrid() {
       <div class="product-desc">${p.desc}</div>
       <div class="product-footer">
         <span class="product-price">${p.price}</span>
-        <a class="product-buy" href="${p.stripePaymentLink || '#'}" target="_blank" onclick="event.stopPropagation()">Buy Now</a>
+        <a class="product-buy" href="${p.stripePaymentLink || '#'}" target="_blank" onclick="event.stopPropagation();trackBuyClick('${p.name}')">Buy Now</a>
       </div>
     </div>
   </div>`).join('');
