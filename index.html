@@ -92,6 +92,16 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   .nav-links a.nav-merch { color: var(--void) !important; background: var(--gold); opacity: 1; padding: 0.4rem 1rem; letter-spacing: 0.15em; transition: background 0.2s, transform 0.15s; }
   .nav-links a.nav-merch::after { display: none; }
   .nav-links a.nav-merch:hover { background: var(--gold-light); transform: translateY(-1px); color: var(--void) !important; }
+  .affiliate-strip { display: flex; gap: 1rem; justify-content: center; padding: 1.5rem 2rem; background: linear-gradient(90deg, transparent, rgba(201,168,76,0.04), transparent); border-bottom: 0.5px solid rgba(201,168,76,0.12); flex-wrap: wrap; }
+  .affiliate-card { display: flex; align-items: center; gap: 1rem; padding: 0.9rem 1.4rem; border: 0.5px solid rgba(201,168,76,0.2); background: rgba(201,168,76,0.03); text-decoration: none; color: var(--text); transition: border-color 0.2s, background 0.2s; flex: 1; min-width: 260px; max-width: 420px; }
+  .affiliate-card:hover { border-color: rgba(201,168,76,0.5); background: rgba(201,168,76,0.07); }
+  .affiliate-card--img { padding: 0; max-width: 380px; overflow: hidden; }
+  .affiliate-card--img img { width: 380px; height: 200px; object-fit: cover; display: block; }
+  .affiliate-text { display: flex; flex-direction: column; flex: 1; }
+  .affiliate-name { font-family: 'Cinzel', serif; font-size: 0.7rem; letter-spacing: 0.2em; color: var(--gold); text-transform: uppercase; }
+  .affiliate-desc { font-size: 0.85rem; color: var(--text-dim); font-style: italic; }
+  .affiliate-btn { font-family: 'Cinzel', serif; font-size: 0.6rem; letter-spacing: 0.15em; color: var(--gold); text-transform: uppercase; white-space: nowrap; opacity: 0.8; }
+  .affiliate-card:hover .affiliate-btn { opacity: 1; }
   .merch-strip { text-align: center; padding: 0.75rem 2rem; background: linear-gradient(90deg, transparent, rgba(201,168,76,0.06), transparent); border-top: 0.5px solid rgba(201,168,76,0.12); border-bottom: 0.5px solid rgba(201,168,76,0.12); }
   .merch-strip a { font-family: 'Cinzel', serif; font-size: 0.65rem; letter-spacing: 0.3em; text-transform: uppercase; color: var(--gold); opacity: 0.7; text-decoration: none; transition: opacity 0.2s; }
   .merch-strip a:hover { opacity: 1; }
@@ -326,6 +336,15 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     </div>
   </div>
   <div class="hero-scroll"><span>Scroll</span><div class="scroll-line"></div></div>
+</section>
+
+<section class="affiliate-strip">
+  <a href="https://imagineartinc.pxf.io/c/7422051/3793190/43678?utm_campaign=imp_i_web_banner1&utm_medium=dsp&utm_source=imp" target="_blank" rel="noopener sponsored" class="affiliate-card affiliate-card--img">
+    <img src="images/affiliate-imagineart.jpeg" alt="ImagineArt — The AI Creative Platform">
+  </a>
+  <a href="https://promeed.sjv.io/c/7422051/3910106/46700" target="_blank" rel="noopener sponsored" class="affiliate-card affiliate-card--img">
+    <img src="images/affiliate-promeed.jpeg" alt="Promeed — Sleep Cooler This Summer">
+  </a>
 </section>
 
 <div class="rune-divider">✦ ✦ ✦</div>
