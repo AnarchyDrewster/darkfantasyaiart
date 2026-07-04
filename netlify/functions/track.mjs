@@ -12,7 +12,7 @@ const BOT_RE = /bot|crawl|spider|slurp|preview|scan|curl|python|wget|monitor|fac
 
 export default async (req, context) => {
   if (req.method !== 'POST') {
-    return new Response('', { status: 405 });
+    return new Response(null, { status: 405 });
   }
 
   let data = {};
@@ -49,7 +49,7 @@ export default async (req, context) => {
   const key = `events/${day}/${now.getTime()}-${Math.random().toString(36).slice(2, 8)}`;
   await store.setJSON(key, event);
 
-  return new Response('', { status: 204 });
+  return new Response(null, { status: 204 });
 };
 
 export const config = { path: '/api/track' };
