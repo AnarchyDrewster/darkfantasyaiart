@@ -12,6 +12,13 @@
     Permissions-Policy = "camera=(), microphone=(), geolocation=()"
     Content-Security-Policy = "default-src 'self'; script-src 'self' 'unsafe-inline' https://app.trysoro.com https://*.googletagmanager.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https:; connect-src 'self' https://api.stripe.com https://app.trysoro.com https://afocirmbqdxnkyescnev.supabase.co https://*.google-analytics.com https://*.analytics.google.com https://*.googletagmanager.com; frame-src https://buy.stripe.com https://checkout.stripe.com; frame-ancestors 'none';"
 
+# Never serve installed dependencies as static files
+[[redirects]]
+  from = "/node_modules/*"
+  to = "/index.html"
+  status = 404
+  force = true
+
 # TikTok OAuth callback redirect
 [[redirects]]
   from = "/callback"

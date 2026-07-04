@@ -81,5 +81,15 @@
   </div>
 </footer>
 
+<script>
+// First-party pageview beacon — visit any page with ?notrack once to exclude this device
+(function(){try{
+  if(location.search.indexOf('notrack')>-1)localStorage.setItem('df_notrack','1');
+  if(localStorage.getItem('df_notrack'))return;
+  var d=JSON.stringify({p:location.pathname,r:document.referrer||''});
+  if(navigator.sendBeacon)navigator.sendBeacon('/api/track',d);
+  else fetch('/api/track',{method:'POST',body:d,keepalive:true});
+}catch(e){}})();
+</script>
 </body>
 </html>

@@ -64,6 +64,7 @@
   <p><strong>Netlify</strong> — site hosting (<a href="https://www.netlify.com/privacy/" target="_blank">netlify.com/privacy</a>)</p>
   <p><strong>Resend</strong> — transactional email delivery</p>
   <p><strong>Google Tag Manager</strong> — analytics</p>
+  <p>We also collect anonymous, first-party page-view statistics hosted on our own domain. No cookies are used and no personal data is stored; visitor identifiers are anonymized and rotate daily.</p>
 
   <h2>Data Retention</h2>
   <p>We retain purchase records as required for tax and accounting purposes. You may request deletion of your personal data at any time by contacting us.</p>
@@ -83,5 +84,15 @@
   </div>
 </footer>
 
+<script>
+// First-party pageview beacon — visit any page with ?notrack once to exclude this device
+(function(){try{
+  if(location.search.indexOf('notrack')>-1)localStorage.setItem('df_notrack','1');
+  if(localStorage.getItem('df_notrack'))return;
+  var d=JSON.stringify({p:location.pathname,r:document.referrer||''});
+  if(navigator.sendBeacon)navigator.sendBeacon('/api/track',d);
+  else fetch('/api/track',{method:'POST',body:d,keepalive:true});
+}catch(e){}})();
+</script>
 </body>
 </html>
