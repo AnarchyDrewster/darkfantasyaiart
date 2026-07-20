@@ -183,16 +183,6 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   .product-price { font-family: 'Cinzel', serif; font-size: 0.9rem; color: var(--gold); }
   .product-buy { font-family: 'Cinzel', serif; font-size: 0.6rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--void); background: var(--gold); border: none; padding: 0.4rem 1rem; cursor: none; transition: background 0.2s; text-decoration: none; display: inline-block; }
   .product-buy:hover { background: var(--gold-light); }
-  #gallery { padding: 8rem 4rem; background: var(--void); position: relative; }
-  #gallery::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 1px; background: linear-gradient(to right, transparent, var(--gold-dim), transparent); }
-  .gallery-masonry { columns: 3; column-gap: 1.5px; max-width: 1400px; margin: 0 auto; }
-  .gallery-item { break-inside: avoid; margin-bottom: 1.5px; position: relative; overflow: hidden; cursor: none; }
-  .gallery-item img { width: 100%; display: block; transition: transform 0.4s ease; }
-  .gallery-item:hover img { transform: scale(1.04); }
-  .gallery-overlay { position: absolute; inset: 0; background: rgba(5,5,7,0); display: flex; align-items: center; justify-content: center; transition: background 0.3s; }
-  .gallery-item:hover .gallery-overlay { background: rgba(5,5,7,0.5); }
-  .gallery-view { font-family: 'Cinzel', serif; font-size: 0.65rem; letter-spacing: 0.3em; text-transform: uppercase; color: var(--gold); border: 0.5px solid var(--gold-dim); padding: 0.5rem 1.2rem; opacity: 0; transform: translateY(10px); transition: opacity 0.3s, transform 0.3s; }
-  .gallery-item:hover .gallery-view { opacity: 1; transform: translateY(0); }
   #about { padding: 8rem 4rem; background: var(--deep); position: relative; }
   #about::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 1px; background: linear-gradient(to right, transparent, var(--gold-dim), transparent); }
   .about-inner { max-width: 900px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1.5fr; gap: 6rem; align-items: center; }
@@ -290,11 +280,10 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   @keyframes scrollPulse { 0%, 100% { opacity: 0.3; } 50% { opacity: 1; } }
   @media (max-width: 768px) {
     nav { padding: 1.5rem 2rem; } .nav-links { display: none; }
-    #home, #shop, #about, #gallery, #contact { padding: 6rem 2rem; }
+    #home, #shop, #about, #contact { padding: 6rem 2rem; }
     .product-grid { grid-template-columns: repeat(2, 1fr); }
     .about-inner { grid-template-columns: 1fr; gap: 3rem; }
     .featured-banner { grid-template-columns: 1fr; }
-    .gallery-masonry { columns: 2; }
     .footer-top { grid-template-columns: 1fr 1fr; }
     .newsletter { padding: 4rem 2rem; }
     .newsletter-form { flex-direction: column; }
@@ -323,7 +312,6 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   <a href="#home" class="nav-logo"><img src="images/logo-joke.png" alt="" class="nav-joke" aria-hidden="true" data-nosnippet>Drew's Beginning<span>Where Darkness Meets Digital</span></a>
   <ul class="nav-links">
     <li><a href="#shop">Shop</a></li>
-    <li><a href="#gallery">Gallery</a></li>
     <li><a href="#about">About</a></li>
     <li><a href="#contact">Contact</a></li>
     <li><a href="https://dark-fantasy-ai-art.myshopify.com" class="nav-merch" target="_blank" rel="noopener" onclick="trackOutbound('nav_merch')">Merch ↗</a></li>
@@ -501,17 +489,6 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   </div>
 </section>
 
-<div class="rune-divider">✦ ✦ ✦</div>
-
-<section id="gallery">
-  <div class="section-header reveal">
-    <p class="section-eyebrow">The Archive</p>
-    <h2 class="section-title">Full Gallery</h2>
-    <div class="section-line"></div>
-  </div>
-  <div class="gallery-masonry reveal" id="galleryGrid"></div>
-</section>
-
 <div class="newsletter reveal">
   <h3 class="newsletter-title">Join the Dark Side</h3>
   <p class="newsletter-sub">Be the first to know when new pieces drop into the void.</p>
@@ -547,7 +524,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       <a href="#home" class="nav-logo">Drew's Beginning<span>Where Darkness Meets Digital</span></a>
       <p>Dark fantasy AI art and mystical digital downloads.</p>
     </div>
-    <div class="footer-col"><h4>Shop</h4><ul><li><a href="#shop">All Works</a></li><li><a href="#shop">New Works</a></li><li><a href="#gallery">Gallery</a></li></ul></div>
+    <div class="footer-col"><h4>Shop</h4><ul><li><a href="#shop">All Works</a></li><li><a href="#shop">New Works</a></li></ul></div>
     <div class="footer-col"><h4>Info</h4><ul><li><a href="#about">About Drew</a></li><li><a href="#contact">Contact</a></li><li><a href="mailto:lyleandy@ymail.com">Email</a></li></ul></div>
     <div class="footer-col"><h4>Follow</h4><ul><li><a href="https://www.instagram.com/anarchy.drewster" target="_blank" rel="noopener">Instagram</a></li><li><a href="https://www.pinterest.com/AnarchyDrewster" target="_blank" rel="noopener">Pinterest</a></li></ul></div>
   </div>
@@ -603,20 +580,13 @@ function buildGrid() {
   });
 }
 
-function buildGallery() {
-  document.getElementById('galleryGrid').innerHTML = products.map(p => `<div class="gallery-item" onclick="openModal(${p.id})">
-    <img src="${p.webImg || p.img}" alt="${p.name}" loading="lazy">
-    <div class="gallery-overlay"><div class="gallery-view">View Piece</div></div>
-  </div>`).join('');
-}
-
 // Cursor
 const cursor = document.getElementById('cursor');
 const dot = document.getElementById('cursorDot');
 let mx=0,my=0,cx=0,cy=0;
 document.addEventListener('mousemove', e => { mx=e.clientX; my=e.clientY; dot.style.left=mx+'px'; dot.style.top=my+'px'; });
 (function animateCursor(){ cx+=(mx-cx)*0.12; cy+=(my-cy)*0.12; cursor.style.left=cx+'px'; cursor.style.top=cy+'px'; requestAnimationFrame(animateCursor); })();
-document.querySelectorAll('a,button,.gallery-item').forEach(el=>{
+document.querySelectorAll('a,button').forEach(el=>{
   el.addEventListener('mouseenter',()=>cursor.style.transform='translate(-50%,-50%) scale(2)');
   el.addEventListener('mouseleave',()=>cursor.style.transform='translate(-50%,-50%) scale(1)');
 });
