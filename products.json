@@ -3,7 +3,7 @@
     "id": 1,
     "name": "Crimson Scream",
     "tag": "Dark Fantasy",
-    "desc": "A face consumed by crimson horror \u00e2\u20ac\u201d raw terror distilled into digital art.",
+    "desc": "A face consumed by crimson horror â€” raw terror distilled into digital art.",
     "price": "$2.00",
     "img": "images/art_1.jpg",
     "stripeProductId": "",
@@ -25,7 +25,7 @@
     "id": 3,
     "name": "The Dissolving Mind",
     "tag": "Mystical",
-    "desc": "A mind unravelling into the labyrinth \u00e2\u20ac\u201d chaos made beautiful.",
+    "desc": "A mind unravelling into the labyrinth â€” chaos made beautiful.",
     "price": "$2.00",
     "img": "images/art_3.jpg",
     "stripeProductId": "",
@@ -52,7 +52,8 @@
     "img": "images/art_5.png",
     "stripeProductId": "",
     "stripePriceId": "",
-    "stripePaymentLink": ""
+    "stripePaymentLink": "",
+    "webImg": "images/web/art_5.jpg"
   },
   {
     "id": 6,
@@ -69,7 +70,7 @@
     "id": 8,
     "name": "The Dark Sermon",
     "tag": "Creatures",
-    "desc": "Between beast and believer \u00e2\u20ac\u201d a confrontation beyond the veil of reason.",
+    "desc": "Between beast and believer â€” a confrontation beyond the veil of reason.",
     "price": "$2.00",
     "img": "images/art_8.jpg",
     "stripeProductId": "",
@@ -80,7 +81,7 @@
     "id": 9,
     "name": "Mystical Madness",
     "tag": "Creatures",
-    "desc": "A serpent deity coils through the enchanted forest \u00e2\u20ac\u201d power dressed in shadow.",
+    "desc": "A serpent deity coils through the enchanted forest â€” power dressed in shadow.",
     "price": "$2.00",
     "img": "images/art_9.jpg",
     "stripeProductId": "",
@@ -91,7 +92,7 @@
     "id": 11,
     "name": "Blood Ritual",
     "tag": "Dark Fantasy",
-    "desc": "Wide-eyed and drenched in red \u00e2\u20ac\u201d a witness to something that cannot be unseen.",
+    "desc": "Wide-eyed and drenched in red â€” a witness to something that cannot be unseen.",
     "price": "$2.00",
     "img": "images/art_11.jpg",
     "stripeProductId": "",
@@ -113,7 +114,7 @@
     "id": 13,
     "name": "Electric Specter",
     "tag": "Mystical",
-    "desc": "Neon-lit and storm-soaked \u00e2\u20ac\u201d a presence that belongs to neither world.",
+    "desc": "Neon-lit and storm-soaked â€” a presence that belongs to neither world.",
     "price": "$2.00",
     "img": "images/art_13.jpg",
     "stripeProductId": "",
@@ -146,7 +147,7 @@
     "id": 16,
     "name": "Signal from Beyond",
     "tag": "Mystical",
-    "desc": "An alien intelligence transmits across the cosmos \u00e2\u20ac\u201d the receiver is already listening.",
+    "desc": "An alien intelligence transmits across the cosmos â€” the receiver is already listening.",
     "price": "$2.00",
     "img": "images/art_16.jpg",
     "stripeProductId": "",
@@ -157,7 +158,7 @@
     "id": 17,
     "name": "Storm Fury",
     "tag": "Creatures",
-    "desc": "Standing in the eye of the maelstrom \u00e2\u20ac\u201d defiant against the consuming void.",
+    "desc": "Standing in the eye of the maelstrom â€” defiant against the consuming void.",
     "price": "$2.00",
     "img": "images/art_17.jpg",
     "stripeProductId": "",
@@ -168,7 +169,7 @@
     "id": 18,
     "name": "Ruinborn",
     "tag": "Creatures",
-    "desc": "She runs through the burning aftermath \u00e2\u20ac\u201d blade in hand, world in flames.",
+    "desc": "She runs through the burning aftermath â€” blade in hand, world in flames.",
     "price": "$2.00",
     "img": "images/art_18.jpg",
     "stripeProductId": "",
@@ -179,12 +180,13 @@
     "id": 19,
     "name": "Obsidian Child",
     "tag": "Dark Fantasy",
-    "desc": "Porcelain black eyes in the shadow of a haunted forest \u00e2\u20ac\u201d innocence swallowed whole.",
+    "desc": "Porcelain black eyes in the shadow of a haunted forest â€” innocence swallowed whole.",
     "price": "$2.00",
     "img": "images/art_19.png",
     "stripeProductId": "",
     "stripePriceId": "",
-    "stripePaymentLink": ""
+    "stripePaymentLink": "",
+    "webImg": "images/web/art_19.jpg"
   },
   {
     "id": 20,
@@ -201,12 +203,13 @@
     "id": 21,
     "name": "Prism Protocol",
     "tag": "Cyberpunk",
-    "desc": "She blazes through the neon corridor \u00e2\u20ac\u201d a living spectrum where chrome meets light.",
+    "desc": "She blazes through the neon corridor â€” a living spectrum where chrome meets light.",
     "price": "$2.00",
     "img": "images/art_21.jpg",
     "stripeProductId": "",
     "stripePriceId": "",
-    "stripePaymentLink": ""
+    "stripePaymentLink": "",
+    "webImg": "images/web/art_21.jpg"
   },
   {
     "id": 22,
@@ -217,7 +220,8 @@
     "img": "images/art_22.jpg",
     "stripeProductId": "",
     "stripePriceId": "",
-    "stripePaymentLink": ""
+    "stripePaymentLink": "",
+    "webImg": "images/web/art_22.jpg"
   },
   {
     "id": 23,
@@ -228,7 +232,8 @@
     "img": "images/art_23.jpg",
     "stripeProductId": "",
     "stripePriceId": "",
-    "stripePaymentLink": ""
+    "stripePaymentLink": "",
+    "webImg": "images/web/art_23.jpg"
   },
   {
     "id": 24,
@@ -239,7 +244,8 @@
     "img": "images/art_24.jpg",
     "stripeProductId": "",
     "stripePriceId": "",
-    "stripePaymentLink": ""
+    "stripePaymentLink": "",
+    "webImg": "images/web/art_24.jpg"
   },
   {
     "id": 25,
@@ -250,18 +256,20 @@
     "img": "images/art_25.jpg",
     "stripeProductId": "",
     "stripePriceId": "",
-    "stripePaymentLink": ""
+    "stripePaymentLink": "",
+    "webImg": "images/web/art_25.jpg"
   },
   {
     "id": 26,
     "name": "Neon Branded",
     "tag": "Cyberpunk",
-    "desc": "Tattooed and wired into the underground \u00e2\u20ac\u201d her pink-lit harness marks her as property of no one.",
+    "desc": "Tattooed and wired into the underground â€” her pink-lit harness marks her as property of no one.",
     "price": "$2.00",
     "img": "images/art_26.jpg",
     "stripeProductId": "",
     "stripePriceId": "",
-    "stripePaymentLink": ""
+    "stripePaymentLink": "",
+    "webImg": "images/web/art_26.jpg"
   },
   {
     "id": 27,
@@ -272,29 +280,32 @@
     "img": "images/art_27.jpg",
     "stripeProductId": "",
     "stripePriceId": "",
-    "stripePaymentLink": ""
+    "stripePaymentLink": "",
+    "webImg": "images/web/art_27.jpg"
   },
   {
     "id": 28,
     "name": "Red Sector",
     "tag": "Cyberpunk",
-    "desc": "Through the crimson corridor she walks \u00e2\u20ac\u201d caught between the city's heat and its cold core.",
+    "desc": "Through the crimson corridor she walks â€” caught between the city's heat and its cold core.",
     "price": "$2.00",
     "img": "images/art_28.jpg",
     "stripeProductId": "",
     "stripePriceId": "",
-    "stripePaymentLink": ""
+    "stripePaymentLink": "",
+    "webImg": "images/web/art_28.jpg"
   },
   {
     "id": 29,
     "name": "Acid Rain",
     "tag": "Cyberpunk",
-    "desc": "She stands where neon bleeds into asphalt \u00e2\u20ac\u201d the city's own reflection staring back.",
+    "desc": "She stands where neon bleeds into asphalt â€” the city's own reflection staring back.",
     "price": "$2.00",
     "img": "images/art_29.jpg",
     "stripeProductId": "",
     "stripePriceId": "",
-    "stripePaymentLink": ""
+    "stripePaymentLink": "",
+    "webImg": "images/web/art_29.jpg"
   },
   {
     "id": 30,
@@ -305,7 +316,8 @@
     "img": "images/art_30.jpg",
     "stripeProductId": "",
     "stripePriceId": "",
-    "stripePaymentLink": ""
+    "stripePaymentLink": "",
+    "webImg": "images/web/art_30.jpg"
   },
   {
     "id": 31,
@@ -316,18 +328,20 @@
     "img": "images/art_31.jpg",
     "stripeProductId": "",
     "stripePriceId": "",
-    "stripePaymentLink": ""
+    "stripePaymentLink": "",
+    "webImg": "images/web/art_31.jpg"
   },
   {
     "id": 32,
     "name": "Void Feeder",
     "tag": "Creatures",
-    "desc": "From the abyss between stars it came \u00e2\u20ac\u201d jaw wide, hunger eternal, mercy unknown.",
+    "desc": "From the abyss between stars it came â€” jaw wide, hunger eternal, mercy unknown.",
     "price": "$2.00",
     "img": "images/art_32.jpg",
     "stripeProductId": "",
     "stripePriceId": "",
-    "stripePaymentLink": ""
+    "stripePaymentLink": "",
+    "webImg": "images/web/art_32.jpg"
   },
   {
     "id": 33,
@@ -338,40 +352,44 @@
     "img": "images/art_33.jpg",
     "stripeProductId": "",
     "stripePriceId": "",
-    "stripePaymentLink": ""
+    "stripePaymentLink": "",
+    "webImg": "images/web/art_33.jpg"
   },
   {
     "id": 34,
     "name": "Lumina Grove",
     "tag": "Mystical",
-    "desc": "Where serpents of light coil through the sacred grove \u00e2\u20ac\u201d colour incarnate, born from the pulse of the forest.",
+    "desc": "Where serpents of light coil through the sacred grove â€” colour incarnate, born from the pulse of the forest.",
     "price": "$2.00",
     "img": "images/art_34.png",
     "stripeProductId": "",
     "stripePriceId": "",
-    "stripePaymentLink": ""
+    "stripePaymentLink": "",
+    "webImg": "images/web/art_34.jpg"
   },
   {
     "id": 35,
     "name": "Chromatic Awakening",
     "tag": "Mystical",
-    "desc": "A rainbow tears through the ancient canopy \u00e2\u20ac\u201d the forest stirs, the mushrooms glow, and something nameless wakes.",
+    "desc": "A rainbow tears through the ancient canopy â€” the forest stirs, the mushrooms glow, and something nameless wakes.",
     "price": "$2.00",
     "img": "images/art_35.png",
     "stripeProductId": "",
     "stripePriceId": "",
-    "stripePaymentLink": ""
+    "stripePaymentLink": "",
+    "webImg": "images/web/art_35.jpg"
   },
   {
     "id": 36,
     "name": "Crimson Stalker",
     "tag": "Creatures",
-    "desc": "Born from the burning dark \u00e2\u20ac\u201d it stalks the cursed wood with embers beneath its claws and hunger in its eyes.",
+    "desc": "Born from the burning dark â€” it stalks the cursed wood with embers beneath its claws and hunger in its eyes.",
     "price": "$2.00",
     "img": "images/art_36.png",
     "stripeProductId": "",
     "stripePriceId": "",
-    "stripePaymentLink": ""
+    "stripePaymentLink": "",
+    "webImg": "images/web/art_36.jpg"
   },
   {
     "id": 37,
@@ -382,359 +400,392 @@
     "img": "images/art_37.png",
     "stripeProductId": "",
     "stripePriceId": "",
-    "stripePaymentLink": ""
+    "stripePaymentLink": "",
+    "webImg": "images/web/art_37.jpg"
   },
   {
     "id": 38,
     "name": "Vibrant Drip",
     "tag": "Color Beyond Flesh",
-    "desc": "Colour uncontained \u00e2\u20ac\u201d pigment with a pulse, dripping beyond the edges of the world it was born from.",
+    "desc": "Colour uncontained â€” pigment with a pulse, dripping beyond the edges of the world it was born from.",
     "price": "$2.00",
     "img": "images/art_38.png",
     "stripeProductId": "",
     "stripePriceId": "",
-    "stripePaymentLink": ""
+    "stripePaymentLink": "",
+    "webImg": "images/web/art_38.jpg"
   },
   {
     "id": 39,
     "name": "True Color",
     "tag": "Color Beyond Flesh",
-    "desc": "Not a hue \u00e2\u20ac\u201d a revelation. Stripped of shadow, this is the colour that was always there.",
+    "desc": "Not a hue â€” a revelation. Stripped of shadow, this is the colour that was always there.",
     "price": "$2.00",
     "img": "images/art_39.png",
     "stripeProductId": "",
     "stripePriceId": "",
-    "stripePaymentLink": ""
+    "stripePaymentLink": "",
+    "webImg": "images/web/art_39.jpg"
   },
   {
     "id": 40,
     "name": "Digital Dream",
     "tag": "Color Beyond Flesh",
-    "desc": "A vision stitched from light and data \u00e2\u20ac\u201d colour so alive it breathes beyond the boundaries of the screen.",
+    "desc": "A vision stitched from light and data â€” colour so alive it breathes beyond the boundaries of the screen.",
     "price": "$2.00",
     "img": "images/art_40.png",
     "stripeProductId": "",
     "stripePriceId": "",
-    "stripePaymentLink": ""
+    "stripePaymentLink": "",
+    "webImg": "images/web/art_40.jpg"
   },
   {
     "id": 41,
     "name": "Blissful Imagination",
     "tag": "Color Beyond Flesh",
-    "desc": "Where the mind goes when it stops holding back \u00e2\u20ac\u201d pure colour, pure feeling, pure freedom.",
+    "desc": "Where the mind goes when it stops holding back â€” pure colour, pure feeling, pure freedom.",
     "price": "$2.00",
     "img": "images/art_41.png",
     "stripeProductId": "",
     "stripePriceId": "",
-    "stripePaymentLink": ""
+    "stripePaymentLink": "",
+    "webImg": "images/web/art_41.jpg"
   },
   {
     "id": 42,
     "name": "The Seen Truth",
     "tag": "Color Beyond Flesh",
-    "desc": "Some things can only be perceived when you stop looking \u00e2\u20ac\u201d and this is what was always waiting to be seen.",
+    "desc": "Some things can only be perceived when you stop looking â€” and this is what was always waiting to be seen.",
     "price": "$2.00",
     "img": "images/art_42.png",
     "stripeProductId": "",
     "stripePriceId": "",
-    "stripePaymentLink": ""
+    "stripePaymentLink": "",
+    "webImg": "images/web/art_42.jpg"
   },
   {
     "id": 43,
     "name": "Neon Revenant",
     "tag": "Cyberpunk",
-    "desc": "Back from the digital void \u00e2\u20ac\u201d wired, luminous, and impossible to kill.",
+    "desc": "Back from the digital void â€” wired, luminous, and impossible to kill.",
     "price": "$2.00",
     "img": "images/art_43.png",
     "stripeProductId": "",
     "stripePriceId": "",
-    "stripePaymentLink": ""
+    "stripePaymentLink": "",
+    "webImg": "images/web/art_43.jpg"
   },
   {
     "id": 44,
     "name": "Neon Netrunner",
     "tag": "Cyberpunk",
-    "desc": "Jacked in and unstoppable \u00e2\u20ac\u201d she moves through the grid like current through wire.",
+    "desc": "Jacked in and unstoppable â€” she moves through the grid like current through wire.",
     "price": "$2.00",
     "img": "images/art_44.png",
     "stripeProductId": "",
     "stripePriceId": "",
-    "stripePaymentLink": ""
+    "stripePaymentLink": "",
+    "webImg": "images/web/art_44.jpg"
   },
   {
     "id": 45,
     "name": "Mercury Mayhem",
     "tag": "Cyberpunk",
-    "desc": "Chrome-fast and chaos-coded \u00e2\u20ac\u201d the city never saw her coming and will never forget she was there.",
+    "desc": "Chrome-fast and chaos-coded â€” the city never saw her coming and will never forget she was there.",
     "price": "$2.00",
     "img": "images/art_45.png",
     "stripeProductId": "",
     "stripePriceId": "",
-    "stripePaymentLink": ""
+    "stripePaymentLink": "",
+    "webImg": "images/web/art_45.jpg"
   },
   {
     "id": 46,
     "name": "Neon Genesis",
     "tag": "Cyberpunk",
-    "desc": "Where the city was born from light and static \u00e2\u20ac\u201d the first signal, the last law, the only truth that matters.",
+    "desc": "Where the city was born from light and static â€” the first signal, the last law, the only truth that matters.",
     "price": "$2.00",
     "img": "images/art_46.png",
     "stripeProductId": "",
     "stripePriceId": "",
-    "stripePaymentLink": ""
+    "stripePaymentLink": "",
+    "webImg": "images/web/art_46.jpg"
   },
   {
     "id": 47,
     "name": "Beyond The Canvas",
     "tag": "Color Beyond Flesh",
-    "desc": "The paint refused to stay \u00e2\u20ac\u201d colour that escaped its frame and never looked back.",
+    "desc": "The paint refused to stay â€” colour that escaped its frame and never looked back.",
     "price": "$2.00",
     "img": "images/art_47.png",
     "stripeProductId": "",
     "stripePriceId": "",
-    "stripePaymentLink": ""
+    "stripePaymentLink": "",
+    "webImg": "images/web/art_47.jpg"
   },
   {
     "id": 48,
     "name": "Reflective Intelligence",
     "tag": "Mystical",
-    "desc": "It does not merely see \u00e2\u20ac\u201d it understands. Ancient wisdom refracted through a modern mind.",
+    "desc": "It does not merely see â€” it understands. Ancient wisdom refracted through a modern mind.",
     "price": "$2.00",
     "img": "images/art_48.png",
     "stripeProductId": "",
     "stripePriceId": "",
-    "stripePaymentLink": ""
+    "stripePaymentLink": "",
+    "webImg": "images/web/art_48.jpg"
   },
   {
     "id": 49,
     "name": "Velatrix",
     "tag": "Cyberpunk",
-    "desc": "She threads the signal through the storm \u00e2\u20ac\u201d faster than the system, sharper than the static.",
+    "desc": "She threads the signal through the storm â€” faster than the system, sharper than the static.",
     "price": "$2.00",
     "img": "images/art_49.png",
     "stripeProductId": "",
     "stripePriceId": "",
-    "stripePaymentLink": ""
+    "stripePaymentLink": "",
+    "webImg": "images/web/art_49.jpg"
   },
   {
     "id": 50,
     "name": "Kairova",
     "tag": "Cyberpunk",
-    "desc": "Precision incarnate \u00e2\u20ac\u201d she exists at the exact moment the city holds its breath.",
+    "desc": "Precision incarnate â€” she exists at the exact moment the city holds its breath.",
     "price": "$2.00",
     "img": "images/art_50.png",
     "stripeProductId": "",
     "stripePriceId": "",
-    "stripePaymentLink": ""
+    "stripePaymentLink": "",
+    "webImg": "images/web/art_50.jpg"
   },
   {
     "id": 51,
     "name": "Vexara",
     "tag": "Cyberpunk",
-    "desc": "Built from contradiction \u00e2\u20ac\u201d neon grace and cold fury wrapped in the city's forgotten frequencies.",
+    "desc": "Built from contradiction â€” neon grace and cold fury wrapped in the city's forgotten frequencies.",
     "price": "$2.00",
     "img": "images/art_51.png",
     "stripeProductId": "",
     "stripePriceId": "",
-    "stripePaymentLink": ""
+    "stripePaymentLink": "",
+    "webImg": "images/web/art_51.jpg"
   },
   {
     "id": 52,
     "name": "Sector Null",
     "tag": "Landscapes",
-    "desc": "Beyond the mapped world \u00e2\u20ac\u201d a place the grid forgot and nature never claimed.",
+    "desc": "Beyond the mapped world â€” a place the grid forgot and nature never claimed.",
     "price": "$2.00",
     "img": "images/art_52.png",
     "stripeProductId": "",
     "stripePriceId": "",
-    "stripePaymentLink": ""
+    "stripePaymentLink": "",
+    "webImg": "images/web/art_52.jpg"
   },
   {
     "id": 53,
     "name": "Digital Dimension",
     "tag": "Landscapes",
-    "desc": "A plane that exists between code and cosmos \u00e2\u20ac\u201d vast, silent, and impossible to leave unchanged.",
+    "desc": "A plane that exists between code and cosmos â€” vast, silent, and impossible to leave unchanged.",
     "price": "$2.00",
     "img": "images/art_53.png",
     "stripeProductId": "",
     "stripePriceId": "",
-    "stripePaymentLink": ""
+    "stripePaymentLink": "",
+    "webImg": "images/web/art_53.jpg"
   },
   {
     "id": 54,
     "name": "Synthetic Goddess",
     "tag": "Biomechanical",
-    "desc": "Where flesh surrenders to circuitry \u00e2\u20ac\u201d a deity forged from code and bone, perfect and merciless.",
+    "desc": "Where flesh surrenders to circuitry â€” a deity forged from code and bone, perfect and merciless.",
     "price": "$2.00",
     "img": "images/art_54.png",
     "stripeProductId": "",
     "stripePriceId": "",
-    "stripePaymentLink": ""
+    "stripePaymentLink": "",
+    "webImg": "images/web/art_54.jpg"
   },
   {
     "id": 55,
     "name": "Purple Entity",
     "tag": "Biomechanical",
-    "desc": "Neither organic nor machine \u00e2\u20ac\u201d a violet presence bleeding through the boundary between worlds.",
+    "desc": "Neither organic nor machine â€” a violet presence bleeding through the boundary between worlds.",
     "price": "$2.00",
     "img": "images/art_55.png",
     "stripeProductId": "",
     "stripePriceId": "",
-    "stripePaymentLink": ""
+    "stripePaymentLink": "",
+    "webImg": "images/web/art_55.jpg"
   },
   {
     "id": 56,
     "name": "Amethyst Prototype",
     "tag": "Biomechanical",
-    "desc": "First of her kind \u00e2\u20ac\u201d crystalline and mechanical, forged from violet light and cold precision.",
+    "desc": "First of her kind â€” crystalline and mechanical, forged from violet light and cold precision.",
     "price": "$2.00",
     "img": "images/art_56.png",
     "stripeProductId": "",
     "stripePriceId": "",
-    "stripePaymentLink": ""
+    "stripePaymentLink": "",
+    "webImg": "images/web/art_56.jpg"
   },
   {
     "id": 57,
     "name": "Cryogenic Awakening",
     "tag": "Biomechanical",
-    "desc": "Thawed from the silence of zero \u00e2\u20ac\u201d flesh and machine stirring together into something that was never meant to feel.",
+    "desc": "Thawed from the silence of zero â€” flesh and machine stirring together into something that was never meant to feel.",
     "price": "$2.00",
     "img": "images/art_57.png",
     "stripeProductId": "",
     "stripePriceId": "",
-    "stripePaymentLink": ""
+    "stripePaymentLink": "",
+    "webImg": "images/web/art_57.jpg"
   },
   {
     "id": 58,
     "name": "Left Behind",
     "tag": "Biomechanical",
-    "desc": "The others evolved and departed \u00e2\u20ac\u201d this one remained, half-organic, half-obsolete, whole in its abandonment.",
+    "desc": "The others evolved and departed â€” this one remained, half-organic, half-obsolete, whole in its abandonment.",
     "price": "$2.00",
     "img": "images/art_58.png",
     "stripeProductId": "",
     "stripePriceId": "",
-    "stripePaymentLink": ""
+    "stripePaymentLink": "",
+    "webImg": "images/web/art_58.jpg"
   },
   {
     "id": 59,
     "name": "Bio-Relevant",
     "tag": "Biomechanical",
-    "desc": "In a world that discards the organic, it insists on mattering \u00e2\u20ac\u201d circuitry threaded through living tissue, refusing to be replaced.",
+    "desc": "In a world that discards the organic, it insists on mattering â€” circuitry threaded through living tissue, refusing to be replaced.",
     "price": "$2.00",
     "img": "images/art_59.png",
     "stripeProductId": "",
     "stripePriceId": "",
-    "stripePaymentLink": ""
+    "stripePaymentLink": "",
+    "webImg": "images/web/art_59.jpg"
   },
   {
     "id": 60,
     "name": "Hybrid Mystery",
     "tag": "Biomechanical",
-    "desc": "Sealed in glass and etched in light \u00e2\u20ac\u201d cyan circuits mapped across skin that was never quite organic, never quite machine.",
+    "desc": "Sealed in glass and etched in light â€” cyan circuits mapped across skin that was never quite organic, never quite machine.",
     "price": "$2.00",
     "img": "images/art_60.png",
     "stripeProductId": "",
     "stripePriceId": "",
-    "stripePaymentLink": ""
+    "stripePaymentLink": "",
+    "webImg": "images/web/art_60.jpg"
   },
   {
     "id": 61,
     "name": "Secret Runner",
     "tag": "Cyberpunk",
-    "desc": "She moves through the city's blind spots \u00e2\u20ac\u201d off the grid, off the record, and faster than anything trying to follow.",
+    "desc": "She moves through the city's blind spots â€” off the grid, off the record, and faster than anything trying to follow.",
     "price": "$2.00",
     "img": "images/art_61.png",
     "stripeProductId": "",
     "stripePriceId": "",
-    "stripePaymentLink": ""
+    "stripePaymentLink": "",
+    "webImg": "images/web/art_61.jpg"
   },
   {
     "id": 62,
     "name": "AfterGlow",
     "tag": "Cyberpunk",
-    "desc": "When the city finally sleeps, the neon doesn't die \u00e2\u20ac\u201d it just softens into something almost beautiful.",
+    "desc": "When the city finally sleeps, the neon doesn't die â€” it just softens into something almost beautiful.",
     "price": "$2.00",
     "img": "images/art_62.png",
     "stripeProductId": "",
     "stripePriceId": "",
-    "stripePaymentLink": ""
+    "stripePaymentLink": "",
+    "webImg": "images/web/art_62.jpg"
   },
   {
     "id": 63,
     "name": "The Red Oracle",
     "tag": "Mystical",
-    "desc": "She speaks in riddles only the desperate understand \u00e2\u20ac\u201d crimson-veiled, ancient beyond naming, right about everything.",
+    "desc": "She speaks in riddles only the desperate understand â€” crimson-veiled, ancient beyond naming, right about everything.",
     "price": "$2.00",
     "img": "images/art_63.png",
     "stripeProductId": "",
     "stripePriceId": "",
-    "stripePaymentLink": ""
+    "stripePaymentLink": "",
+    "webImg": "images/web/art_63.jpg"
   },
   {
     "id": 64,
     "name": "Hybrid Elegance",
     "tag": "Biomechanical",
-    "desc": "Where precision meets beauty \u00e2\u20ac\u201d circuitry woven into form so gracefully you forget where the machine ends and the art begins.",
+    "desc": "Where precision meets beauty â€” circuitry woven into form so gracefully you forget where the machine ends and the art begins.",
     "price": "$2.00",
     "img": "images/art_64.png",
     "stripeProductId": "",
     "stripePriceId": "",
-    "stripePaymentLink": ""
+    "stripePaymentLink": "",
+    "webImg": "images/web/art_64.jpg"
   },
   {
     "id": 65,
     "name": "Destination Earth",
     "tag": "Biomechanical",
-    "desc": "Engineered for a world it was never born to \u00e2\u20ac\u201d half-vessel, half-vision, arriving somewhere between machine and myth.",
+    "desc": "Engineered for a world it was never born to â€” half-vessel, half-vision, arriving somewhere between machine and myth.",
     "price": "$2.00",
     "img": "images/art_65.png",
     "stripeProductId": "",
     "stripePriceId": "",
-    "stripePaymentLink": ""
+    "stripePaymentLink": "",
+    "webImg": "images/web/art_65.jpg"
   },
   {
     "id": 66,
     "name": "The Winter Sorceress",
     "tag": "Mystical",
-    "desc": "Born from frost and forgotten spells \u00e2\u20ac\u201d she walks the dead of winter like a queen, cold as the silence before the storm.",
+    "desc": "Born from frost and forgotten spells â€” she walks the dead of winter like a queen, cold as the silence before the storm.",
     "price": "$2.00",
     "img": "images/art_66.png",
     "stripeProductId": "",
     "stripePriceId": "",
-    "stripePaymentLink": ""
+    "stripePaymentLink": "",
+    "webImg": "images/web/art_66.jpg"
   },
   {
     "id": 67,
     "name": "Circuit Doll",
     "tag": "Cyberpunk",
-    "desc": "Wired beneath porcelain skin \u00e2\u20ac\u201d she looks fragile until the moment she isn't.",
+    "desc": "Wired beneath porcelain skin â€” she looks fragile until the moment she isn't.",
     "price": "$2.00",
     "img": "images/art_67.png",
     "stripeProductId": "",
     "stripePriceId": "",
-    "stripePaymentLink": ""
+    "stripePaymentLink": "",
+    "webImg": "images/web/art_67.jpg"
   },
   {
     "id": 68,
     "name": "Black Widow",
     "tag": "Cyberpunk",
-    "desc": "Lethal by design and beautiful by accident \u00e2\u20ac\u201d she moves through the city's shadows like venom through a vein.",
+    "desc": "Lethal by design and beautiful by accident â€” she moves through the city's shadows like venom through a vein.",
     "price": "$2.00",
     "img": "images/art_68.png",
     "stripeProductId": "",
     "stripePriceId": "",
-    "stripePaymentLink": ""
+    "stripePaymentLink": "",
+    "webImg": "images/web/art_68.jpg"
   },
   {
     "id": 69,
     "name": "Imaginary Soul",
     "tag": "Punk/Goth",
-    "desc": "Lost in the space between what was felt and what was real \u00e2\u20ac\u201d a soul that only exists in the dark.",
+    "desc": "Lost in the space between what was felt and what was real â€” a soul that only exists in the dark.",
     "price": "$2.00",
     "img": "images/art_69.png",
     "stripeProductId": "",
     "stripePriceId": "",
-    "stripePaymentLink": ""
+    "stripePaymentLink": "",
+    "webImg": "images/web/art_69.jpg"
   },
   {
     "id": 70,
@@ -745,18 +796,20 @@
     "img": "images/art_70.png",
     "stripeProductId": "",
     "stripePriceId": "",
-    "stripePaymentLink": ""
+    "stripePaymentLink": "",
+    "webImg": "images/web/art_70.jpg"
   },
   {
     "id": 71,
     "name": "Demon Heart",
     "tag": "Punk/Goth",
-    "desc": "She smiles between the skulls \u00e2\u20ac\u201d marked, tattooed, and at home in the dark.",
+    "desc": "She smiles between the skulls â€” marked, tattooed, and at home in the dark.",
     "price": "$2.00",
     "img": "images/art_71.png",
     "stripeProductId": "",
     "stripePriceId": "",
-    "stripePaymentLink": ""
+    "stripePaymentLink": "",
+    "webImg": "images/web/art_71.jpg"
   },
   {
     "id": 72,
@@ -767,51 +820,56 @@
     "img": "images/art_72.png",
     "stripeProductId": "",
     "stripePriceId": "",
-    "stripePaymentLink": ""
+    "stripePaymentLink": "",
+    "webImg": "images/web/art_72.jpg"
   },
   {
     "id": 73,
     "name": "Urban Frequency",
     "tag": "Cyberpunk",
-    "desc": "Locked into the city's signal \u00e2\u20ac\u201d she moves on a wavelength the surface world will never intercept.",
+    "desc": "Locked into the city's signal â€” she moves on a wavelength the surface world will never intercept.",
     "price": "$2.00",
     "img": "images/art_73.png",
     "stripeProductId": "",
     "stripePriceId": "",
-    "stripePaymentLink": ""
+    "stripePaymentLink": "",
+    "webImg": "images/web/art_73.jpg"
   },
   {
     "id": 74,
     "name": "Constant Wonder",
     "tag": "Cyberpunk",
-    "desc": "In a city that never stops moving, she found a frequency of her own \u00e2\u20ac\u201d steady, electric, unshakeable.",
+    "desc": "In a city that never stops moving, she found a frequency of her own â€” steady, electric, unshakeable.",
     "price": "$2.00",
     "img": "images/art_74.png",
     "stripeProductId": "",
     "stripePriceId": "",
-    "stripePaymentLink": ""
+    "stripePaymentLink": "",
+    "webImg": "images/web/art_74.jpg"
   },
   {
     "id": 75,
     "name": "Electric Outlaw",
     "tag": "Cyberpunk",
-    "desc": "Off the grid, outside the law, and crackling with voltage \u00e2\u20ac\u201d the city wants her caught and can't get close.",
+    "desc": "Off the grid, outside the law, and crackling with voltage â€” the city wants her caught and can't get close.",
     "price": "$2.00",
     "img": "images/art_75.png",
     "stripeProductId": "",
     "stripePriceId": "",
-    "stripePaymentLink": ""
+    "stripePaymentLink": "",
+    "webImg": "images/web/art_75.jpg"
   },
   {
     "id": 76,
     "name": "Prisma-9",
     "tag": "Biomechanical",
-    "desc": "Unit nine in a spectrum of synthetic life \u00e2\u20ac\u201d light fractured through circuitry, beauty assembled from cold precision.",
+    "desc": "Unit nine in a spectrum of synthetic life â€” light fractured through circuitry, beauty assembled from cold precision.",
     "price": "$2.00",
     "img": "images/art_76.png",
     "stripeProductId": "",
     "stripePriceId": "",
-    "stripePaymentLink": ""
+    "stripePaymentLink": "",
+    "webImg": "images/web/art_76.jpg"
   },
   {
     "id": 77,
@@ -822,7 +880,8 @@
     "img": "images/art_77.png",
     "stripeProductId": "",
     "stripePriceId": "",
-    "stripePaymentLink": ""
+    "stripePaymentLink": "",
+    "webImg": "images/web/art_77.jpg"
   },
   {
     "id": 78,
@@ -833,6 +892,7 @@
     "img": "images/art_78.png",
     "stripeProductId": "",
     "stripePriceId": "",
-    "stripePaymentLink": ""
+    "stripePaymentLink": "",
+    "webImg": "images/web/art_78.jpg"
   }
 ]

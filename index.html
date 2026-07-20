@@ -567,7 +567,7 @@ let products = [];
 function buildGrid() {
   const grid = document.getElementById('productGrid');
   grid.innerHTML = products.map(p => `<div class="product-card" id="product-${p.id}" onclick="openModal(${p.id})">
-    <img src="${p.img}" alt="${p.name}" loading="lazy">
+    <img src="${p.webImg || p.img}" alt="${p.name}" loading="lazy">
     <div class="product-info">
       <div class="product-tag">${p.tag}</div>
       <div class="product-name">${p.name}</div>
@@ -586,7 +586,7 @@ function buildGrid() {
 
 function buildGallery() {
   document.getElementById('galleryGrid').innerHTML = products.map(p => `<div class="gallery-item" onclick="openModal(${p.id})">
-    <img src="${p.img}" alt="${p.name}" loading="lazy">
+    <img src="${p.webImg || p.img}" alt="${p.name}" loading="lazy">
     <div class="gallery-overlay"><div class="gallery-view">View Piece</div></div>
   </div>`).join('');
 }
@@ -622,7 +622,7 @@ document.querySelectorAll('.filter-btn').forEach(btn=>btn.addEventListener('clic
 // Modal
 function openModal(id){
   const p=products.find(x=>x.id===id); if(!p) return;
-  document.getElementById('modalImg').src=p.img;
+  document.getElementById('modalImg').src=p.webImg || p.img;
   document.getElementById('modalImg').alt=p.name;
   document.getElementById('modalTag').textContent=p.tag;
   document.getElementById('modalTitle').textContent=p.name;
