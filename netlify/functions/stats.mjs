@@ -63,9 +63,8 @@ function renderPage(days, daily) {
     for (const [r, n] of Object.entries(d.refs)) totals.refs[r] = (totals.refs[r] || 0) + n;
   }
 
-  const last30 = days.slice(-30);
-  const maxViews = Math.max(1, ...last30.map((d) => daily[d].views));
-  const bars = last30
+  const maxViews = Math.max(1, ...days.map((d) => daily[d].views));
+  const bars = days
     .map((day) => {
       const d = daily[day];
       const h = Math.round((d.views / maxViews) * 100);
@@ -76,7 +75,6 @@ function renderPage(days, daily) {
 
   const dayRows = [...days]
     .reverse()
-    .slice(0, 60)
     .map(
       (day) =>
         `<tr><td>${day}</td><td>${daily[day].views}</td><td>${daily[day].uniques}</td><td class="dim">${daily[day].bots}</td></tr>`
@@ -103,8 +101,8 @@ function renderPage(days, daily) {
   .card{background:#161020;border:1px solid #2a2135;border-radius:8px;padding:1rem 1.5rem;min-width:140px}
   .card .num{font-size:2rem;color:#e8ddf5}
   .card .label{font-size:.8rem;color:#8a7f99;text-transform:uppercase;letter-spacing:1px}
-  .chart{display:flex;align-items:flex-end;gap:3px;height:140px;margin:1rem 0;padding:1rem;background:#161020;border:1px solid #2a2135;border-radius:8px}
-  .bar{flex:1;display:flex;flex-direction:column;justify-content:flex-end;height:100%;text-align:center}
+  .chart{display:flex;align-items:flex-end;gap:3px;height:140px;margin:1rem 0;padding:1rem;background:#161020;border:1px solid #2a2135;border-radius:8px;overflow-x:auto}
+  .bar{flex:0 0 auto;width:10px;display:flex;flex-direction:column;justify-content:flex-end;height:100%;text-align:center}
   .bar .fill{background:linear-gradient(to top,#5a3d8a,#9b6fd8);border-radius:2px 2px 0 0;min-height:2px}
   .bar span{font-size:.6rem;color:#5a5266;margin-top:4px}
   table{width:100%;border-collapse:collapse;margin:1rem 0}
@@ -121,7 +119,7 @@ function renderPage(days, daily) {
   <div class="card"><div class="num">${days.length ? daily[days[days.length - 1]].uniques : 0}</div><div class="label">Visitors today</div></div>
   <div class="card"><div class="num dim">${totals.bots}</div><div class="label">Bot hits (excluded)</div></div>
 </div>
-<h2>Last 30 days</h2>
+<h2>Daily views (all time, scroll for full history)</h2>
 <div class="chart">${bars || '<p class="note">No data yet — check back after some traffic.</p>'}</div>
 <h2>Daily breakdown</h2>
 <table><tr><th>Date (UTC)</th><th>Views</th><th>Visitors</th><th>Bots</th></tr>${dayRows}</table>
